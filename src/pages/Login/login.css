@@ -13,6 +13,10 @@ main{
     flex: 1;
 }
 
+form#forms-login{
+    width: 400px;
+}
+
 #esqueceu-senha a{
     color: #1d1d1d;
     text-decoration: underline;
