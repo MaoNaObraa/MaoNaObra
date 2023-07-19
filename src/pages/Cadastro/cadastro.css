@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    max-width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+/* Estilos da sidebar */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: #0c6a96;
+    color: white;
+}
+
+.logotipo {
+    width: 128px;
+}
+
+.etapa {
+    display: flex;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.etapa-simbolo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    font-size: 24px;
+    margin-right: 12px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.etapa-simbolo.ativo {
+    background-color: white;
+    color: #0c6a96;
+}
+
+.formulario-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+.form-group {
+    display: flex;
+}
+
+.informacoes-formulario h1 {
+    color: #0c6a96;
+}
+
+.foto-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.foto {
+    width: 64px;
+    margin-right: 12px;
+}
+
+.informacoes-foto h2 {
+    font-size: 16px;
+    color: #0c6a96;
+}
+
+.formulario form {
+    width: 100%;
+}
+
+.formulario label {
+    display: flex;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.input-group {
+    margin: 0px 20px!important;
+}
+
+.formulario input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #0c6a96;
+}
+
+.continue-button {
+    margin-top: 10px;
+    
+}
+
+.continue-button button {
+    background-color: #0c6a96;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #0c6a96;
+    padding: 10px;
+    margin-left: 355px;
+    cursor: pointer;
+    position: left;
+}
+
+.continue-button button:hover {
+    background-color: green;
+}
