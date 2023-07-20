@@ -11,6 +11,7 @@ function App() {
     <>
       
       <PrestadorServico nome="kemysson"/>
+      <img src="./star.svg" alt="" />
 
       {/* <Login /> */}
 
