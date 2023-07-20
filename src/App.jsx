@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       
-      <PrestadorServico nome="kemysson"/>
+      <PrestadorServico name="Laura Nogueira" text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed efficitur ante. Praesent iaculis laoreet justo, et vestibulum ipsum consectetur.' nota='5.0' funcao='caloteiro'/>
       <img src="./star.svg" alt="" />
 
       {/* <Login /> */}
