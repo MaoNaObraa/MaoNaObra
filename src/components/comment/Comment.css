@@ -1,0 +1,17 @@
+#foto-comentario{
+    width: 80px;
+    height: 80px;
+    background: red;
+    border-radius: 50%;
+    background-image: url("../../../public/fotocomentario.png");
+    background-size: cover;
+    margin-right: 20px;
+}
+
+#comentario{
+    width: 700px;
+    height: 150px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
