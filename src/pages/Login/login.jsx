@@ -1,7 +1,18 @@
+import { useState } from 'react'
+
 import Input from '../../components/input/Input'
 import './login.css'
 
 function Login() {
+  //      get     set
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+
+  function enviar(){
+    console.log(email)
+    console.log(senha)
+  }
+
   return (
     <>
       <main className='d-flex'>
@@ -28,8 +39,8 @@ function Login() {
             </div>
 
             <form action="" className='mt-3' id="forms-login">
-              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail"/>
-              <Input id='senha' label="Senha:" type="password" nome='senha' placeholder="Digite sua senha"/>
+              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" value={email} onchange={ (event) => {setEmail(event.target.value)} }/>
+              <Input id='senha' label="Senha:" type="password" nome='senha' placeholder="Digite sua senha"value={senha} onchange={ (event)=> {setSenha(event.target.value) } }/>
             </form>
 
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
@@ -44,7 +55,7 @@ function Login() {
             </div>
 
             <div id="botao-login" className='w-100 mt-2'>
-              <button className='rounded text-light'>Entrar na conta</button>
+              <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
             </div>
 
 
