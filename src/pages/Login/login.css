@@ -47,3 +47,9 @@ form#forms-login{
     font-weight: lighter;
     line-height:28px;
 }
+
+@media (max-width: 576px) {
+    #side-blue{
+        display: none !important;
+    }
+}
