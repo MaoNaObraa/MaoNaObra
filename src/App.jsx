@@ -1,26 +1,34 @@
 import './App.css'
 import Navigation from './components/navigation/Navigation';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
-import Login from './pages/Login/login'
+import Cadastro from './pages/Cadastro/Cadastro';
+
 
 function App() {
   return (
     <>
+      <BrowserRouter>
 
-      <Login />
+        <div>
+          <Route path="/cadastro">
+            <Cadastro />
+          </Route>
 
-        {/* <Navigation />
-          <BrowserRouter>
+          {/* Componente Navigation aparece somente na rota inicial '/' */}
+          <Route path="/" exact>
+            <Navigation />
+          </Route>
 
-            <Switch>
+          {/* Rota para outras páginas que não cadastro */}
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
 
-              <Route path='/'exact>
-                <Home />
-              </Route> 
-                
-            </Switch>
-          </BrowserRouter> */}
     </>
   )
 }
