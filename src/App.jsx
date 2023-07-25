@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Cadastro from './pages/Cadastro/Cadastro';
 
+
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
           </Switch>
         </div>
       </BrowserRouter>
+
     </>
   )
 }
