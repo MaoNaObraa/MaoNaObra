@@ -1,35 +1,36 @@
 import './NavegationCadastro.css'
+import { NavLink } from 'react-router-dom';
 
 
 function NavegationCadastro() {
     return (
         <div id='side-bar' className='d-flex align-items-center flex-column justify-content-around'>
             <div id='logo-box'>
-                <img src="logo.png" alt="" width={130} />
+                <img src="./logo.png" alt="" width={130} />
             </div>
             
             <div id='navegation-box'>
-                <a href="/suasInformacoes">
-                <li>
-                    <div className='step-number' id='1'>1</div>
-                    <div className='step-info'><div className='step-info-number'>Primeiro Passo</div>Suas informações</div>
-                </li>
-                </a>
+                <NavLink to="/cadastro/suasInformacoes">
+                    <li>
+                        <div className='step-number' id='1'>1</div>
+                        <div className='step-info'><div className='step-info-number'>Primeiro Passo</div>Suas informações</div>
+                    </li>
+                </NavLink>
 
-                <a href="/dadosPessoais">
+                <NavLink to="/cadastro/dadosPessoais">
                 <li>
                     <div className='step-number'>2</div>
                     <div className='step-info'><div className='step-info-number'>Segundo Passo</div>Dados pessoais</div>
                 </li>
-                </a>
+                </NavLink>
 
 
-                <a href="/TipoCadastro">
+                <NavLink to="/cadastro/TipoCadastro">
                 <li>
                     <div className='step-number'>3</div>
                     <div className='step-info'><div className='step-info-number'>Terceiro Passo</div>Tipo de cadastro</div>
                 </li>
-                </a>
+                </NavLink>
             </div>
             <div></div>
         </div>
