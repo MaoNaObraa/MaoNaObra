@@ -1,6 +1,5 @@
-import './cadastro.css'
 import NavegationCadastro from '../../components/Cadastro-components/navegation-cadastro/NavegationCadastro'
-import { useRouteMatch, Switch, Route } from "react-router-dom";
+import { useRouteMatch, Route } from "react-router-dom";
 import SuasInformacoes from '../../components/Cadastro-components/SuasInformacoes/SuasInformacoes'
 import DadosPessoais from '../../components/Cadastro-components/dados-pessoais/DadosPessoais';
 import TipoCadastro from '../../components/Cadastro-components/tipo-cadastro/TipoCadastro';
