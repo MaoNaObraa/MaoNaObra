@@ -3,6 +3,7 @@ import Navigation from './components/navigation/Navigation';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Cadastro from './pages/Cadastro/Cadastro';
+import Login from './pages/Login/login';
 
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
 
           {/* Rota para outras páginas que não cadastro */}
           <Switch>
+            <Route path="/login" exact>
+              <Login />
+            </Route>
+
             <Route path="/" exact>
               <Home />
             </Route>

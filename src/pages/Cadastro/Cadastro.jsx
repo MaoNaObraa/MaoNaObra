@@ -6,7 +6,6 @@ import TipoCadastro from '../../components/Cadastro-components/tipo-cadastro/Tip
 
 const Cadastro = () => {
 
-    let { path } = useRouteMatch();
     return (
         <>
             <div className='d-flex'>

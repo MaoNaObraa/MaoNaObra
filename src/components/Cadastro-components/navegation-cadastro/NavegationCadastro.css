@@ -5,26 +5,11 @@
     height: 100vh;
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-li{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    user-select:none;
-    margin-bottom: 30px;
-    
-}
-
 .step-number{
-    border: 4px solid white;
+    border: 3px solid white;
     margin-right: 15px;
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -44,14 +29,9 @@ li{
     font-weight: lighter;
 }
 
-a{
-    text-decoration: none;
-}
-
 .selected .step-number{
-    background-color: #C5DFFA;
+    background-color: #ffffff;
     color: #1d1d1d;
-    font-weight: bold;
     border: 0;
     transition: all 600ms;
 }

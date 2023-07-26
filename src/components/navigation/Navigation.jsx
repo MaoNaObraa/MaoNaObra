@@ -13,7 +13,7 @@ const Navigation = () => {
                 </div>
 
                 <div className='d-flex align-items-center justify-content-center'>
-                    <a href="/login" id='login'>Login</a>
+                    <Link to="/login" id='login'>Login</Link>
                     <Link to="/cadastro/suasInformacoes" id='cadastro'>Criar conta</Link>
                 </div>
             </div>

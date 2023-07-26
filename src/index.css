@@ -10,6 +10,15 @@
   --color-principal: #0C6A96;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.text-principal{
+  color: #0C6A96;
+}
+
 a{
   text-decoration: none;
   color: white;
