@@ -1,0 +1,47 @@
+.principal-box-cadastro{
+    width: 60%;
+    margin: 0 auto;
+    padding: 25px 0;
+}
+
+#placeholder-perfil{
+    cursor: pointer;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background: url('../../../../public/placeholder-perfil.png') center no-repeat;
+    background-size: cover;   
+    border-radius: 10px;
+}
+
+.first-text-cadastro p , #first-text-cadastro h2{
+    margin: 0;
+    padding: 0;
+}
+
+#image-perfil{
+    display: none;
+}
+
+#text-placeholder-perfil{
+    margin-left: 15px;
+}
+
+#text-placeholder-perfil h6{
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+#text-placeholder-perfil p{
+    margin: 0;
+    font-size: 14px;
+}
+.next-step{
+    background-color: var(--color-principal);
+    display: flex;
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+}

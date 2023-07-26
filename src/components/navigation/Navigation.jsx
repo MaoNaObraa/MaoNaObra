@@ -1,4 +1,5 @@
 import './navigation.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 const Navigation = () => {
     return ( 
@@ -12,8 +13,8 @@ const Navigation = () => {
                 </div>
 
                 <div className='d-flex align-items-center justify-content-center'>
-                    <a href="/login" id='login'>Login</a>
-                    <a href="#" id='cadastro'>Criar conta</a>
+                    <Link to="/login" id='login'>Login</Link>
+                    <Link to="/cadastro/suasInformacoes" id='cadastro'>Criar conta</Link>
                 </div>
             </div>
         </nav>
