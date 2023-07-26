@@ -53,7 +53,7 @@ function Login() {
               </div>
 
               <div id='esqueceu-senha'>
-                <a href="google.com">Esqueceu senha?</a>
+                <Link to="/recuperarSenha">Esqueceu senha?</Link>
               </div>
             </div>
 
