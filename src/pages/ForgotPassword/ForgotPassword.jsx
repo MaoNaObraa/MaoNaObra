@@ -6,10 +6,10 @@ const ForgotPassword = () => {
             <div id='principal'>
                 <div className='container' id='principal-box'>
                     <div className="head">
-                        <a href="/" className='d-flex align-items-center justify-content-center'>
+                        <Link to="/" className='d-flex align-items-center justify-content-center'>
                             <img src="/logo.png" alt="" width='60'/>
                             <h4 className='text-light mt-2 p-3 font-weight-bold'>MãoNaObra</h4>
-                        </a>
+                        </Link>
                     </div>
                     <div className='d-flex mb-5'>
                         <div className="caixa">
