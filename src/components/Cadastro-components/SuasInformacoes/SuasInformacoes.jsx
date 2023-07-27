@@ -24,7 +24,7 @@ const SuasInformacoes = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='mt-2'>
                     <form action="">
                         <Input id="nome-completo" label="Nome completo:" type="text" nome="nomeCompleto" placeholder="Digite seu nome completo" value="" onchange="" />
                         <Input id="email" label="E-mail:" type="text" nome="email" placeholder="Digite seu e-mail" value="" onchange="" />

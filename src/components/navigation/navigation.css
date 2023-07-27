@@ -3,6 +3,7 @@
     height: 75px;
     box-shadow: 0 0 10px rgb(154, 154, 154);
     margin-bottom: 30px;
+    
 }
 
 #logo{
@@ -14,10 +15,12 @@
 #login{
     color: white;
     font-size: 20px;
+    font-weight: 600;
     text-decoration: none;
 }
 
 #cadastro{
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,5 +31,4 @@
     height: 40px;
     margin-left: 20px;
     border-radius: 8px;
-    font-weight: 500;
 }
