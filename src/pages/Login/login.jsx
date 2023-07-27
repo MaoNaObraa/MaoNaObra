@@ -1,7 +1,21 @@
+import { useState } from 'react'
+
 import Input from '../../components/input/Input'
 import './login.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom'
 
 function Login() {
+  //      get     set
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+
+  var senhaMostrar = "password"
+
+  function enviar(){
+    console.log(email)
+    console.log(senha)
+  }
+
   return (
     <>
       <main className='d-flex'>
@@ -20,7 +34,7 @@ function Login() {
 
           <div>
             <div id='logo-login' className='d-flex flex-column align-items-center'>
-              <img src="logo.png" width='90' alt="" />
+              <Link to="/"><img src="logo.png" width='90' alt="" /></Link> 
               <div className='text-center'>
                 <h2 className='mt-3' >Seja bem vindo</h2>
                 <p>Digite os dados para realizar o login</p>
@@ -28,8 +42,8 @@ function Login() {
             </div>
 
             <form action="" className='mt-3' id="forms-login">
-              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail"/>
-              <Input id='senha' label="Senha:" type="password" nome='senha' placeholder="Digite sua senha"/>
+              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" value={email} onchange={ (event) => {setEmail(event.target.value)} }/>
+              <Input id='senha' label="Senha:" type={senhaMostrar} nome='senha' placeholder="Digite sua senha"value={senha} onchange={ (event)=> {setSenha(event.target.value) } }/>
             </form>
 
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
@@ -39,17 +53,17 @@ function Login() {
               </div>
 
               <div id='esqueceu-senha'>
-                <a href="google.com">Esqueceu senha?</a>
+                <Link to="/recuperarSenha">Esqueceu senha?</Link>
               </div>
             </div>
 
             <div id="botao-login" className='w-100 mt-2'>
-              <button className='rounded text-light'>Entrar na conta</button>
+              <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
             </div>
 
 
             <div id='cadastro-login' className='text-center mt-4'>
-              <h6>Não tem login? <a href="" id='cadastre-se-login'>Cadastre-se</a></h6>
+              <h6>Não tem login? <Link to="/cadastro/suasInformacoes" id='cadastre-se-login'>Cadastre-se</Link></h6>
             </div>
           </div>
         </div>
