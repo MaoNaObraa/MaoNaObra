@@ -1,43 +1,41 @@
 import './PrestadorServico.css'
+import estrela from "/star.svg"
 
-const PrestadorServico = ({name, text, funcao, nota}) => {
-    return ( 
-        <>
-             <main class='d-flex justify-content-center align-items-center'>
-           
-           <div class='card'>
-           
-           
-            <div class='imagem'>
-               <div class='d-flex justify-content-end'>
-               <div id='star' class='d-flex justify-content-center m-2'>
+const PrestadorServico = ({ foto, nome, descricao, servicos, avaliacao }) => {
+  return (
+    <>
+      <div className='card'>
 
-                 <h5 id='avaliation' class='m-1'>{nota}</h5>
-               </div>
-               </div>
+        <div className='imagem' style={{ backgroundImage: `url(${foto})` }}>
+          <div className='d-flex justify-content-end'>
+            <div id='star' className='d-flex justify-content-center m-2'>
+              <div id='avaliation' className='m-1 d-flex justify-content-between align-items-center'> <img src={estrela} /> <span id='avaliation-texto'>{avaliacao}</span> </div>
             </div>
+          </div>
+        </div>
 
-            <div class='p-3'>
-             <div>
-               <h5 id='Nome' >{name}</h5>
-                <p id="text" >{text}</p>
-             </div>
-             <div class='d-flex flex-column'>
-               <p id='services'>serviços:</p>
-                <h5 id='function' >{funcao}</h5>
+        <div className='d-flex flex-column justify-content-around px-2 py-1'>
+          <div>
+            <div>
+              <h5 id='Nome'>{nome}</h5>
             </div>
+            <div id="descricao-box">
+              <p id="text">{descricao}</p>
             </div>
-             <div>
-               <button id='botão' type="button">Contratar</button>
-             </div>
-           
-           </div>
-          
-               
-       
-       </main>
-        </>
-     );
+          </div>
+          <div className='d-flex flex-column'>
+            <p id='services'>serviços:</p>
+            <p id='function'>{servicos.join(' · ')}</p>
+          </div>
+        </div>
+        <div>
+          <button id='botão'>Contratar</button>
+        </div>
+
+      </div>
+
+    </>
+  );
 }
- 
+
 export default PrestadorServico;
