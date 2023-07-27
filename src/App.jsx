@@ -19,6 +19,7 @@ function App() {
           {/* Componente Navigation aparece somente na rota inicial '/' */}
           <Route path="/" exact>
             <Navigation />
+            
           </Route>
 
           {/* Rota para outras páginas que não cadastro */}
