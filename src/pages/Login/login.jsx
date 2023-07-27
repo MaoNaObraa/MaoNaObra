@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import Input from '../../components/input/Input'
 import './login.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
@@ -9,12 +8,22 @@ function Login() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  var senhaMostrar = "password"
-
   function enviar(){
     console.log(email)
     console.log(senha)
   }
+
+function Mostrarsenha() {
+
+  var caixaSenha = document.getElementById("senha")
+  if (caixaSenha.type === "password") {
+    caixaSenha.type = "text"
+  } else {
+    caixaSenha.type = "password"
+  }
+  
+}
+  
 
   return (
     <>
@@ -43,13 +52,13 @@ function Login() {
 
             <form action="" className='mt-3' id="forms-login">
               <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" value={email} onchange={ (event) => {setEmail(event.target.value)} }/>
-              <Input id='senha' label="Senha:" type={senhaMostrar} nome='senha' placeholder="Digite sua senha"value={senha} onchange={ (event)=> {setSenha(event.target.value) } }/>
+              <Input id='senha' label="Senha:" type='password' nome='senha' placeholder="Digite sua senha"value={senha} onchange={ (event)=> {setSenha(event.target.value) } }/>
             </form>
 
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
               <div>
-                <input type="checkbox" name="mostrarSenha" id="mostrarSenha"/>
-                <label htmlFor="mostrarSenha" className='p-2'>Mostrar senha</label>
+                <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha}/>
+                <label htmlFor="mostrarSenha" className='p-2' class='nomeMostrar'>Mostrar senha</label>
               </div>
 
               <div id='esqueceu-senha'>
