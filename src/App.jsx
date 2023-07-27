@@ -1,4 +1,3 @@
-import './App.css'
 import Navigation from './components/navigation/Navigation';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
@@ -6,8 +5,8 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import Login from './pages/Login/login';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 
-
 function App() {
+
   return (
     <>
       <BrowserRouter>
@@ -38,7 +37,6 @@ function App() {
           </Switch>
         </div>
       </BrowserRouter>
-
     </>
   )
 }
