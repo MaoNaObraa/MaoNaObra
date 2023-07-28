@@ -1,10 +1,13 @@
-const selectCategorie = () => {
-    return ( 
-        <div className='categoria mt-1'>
-                <label htmlFor="construcoesReformas">Construções e Reformas</label>
-                <input type="radio" name="categoria" id="construcoesReformas" value="construcoesReformas" className='hidden'/>
-        </div>
-     );
+import "./SelectCategorie.css"
+
+const SelectCategorie = ({ nomeCategoria, id, value }) => {
+
+    return (
+        <>
+            <input type="radio" name="categoria" id={id} value={value} className='input-categoria' />
+            <label htmlFor={id} className="label-categoria categoria">{nomeCategoria}</label>
+        </>
+    );
 }
- 
-export default selectCategorie;
+
+export default SelectCategorie;
