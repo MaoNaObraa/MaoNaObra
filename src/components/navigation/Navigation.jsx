@@ -1,5 +1,6 @@
 import './navigation.css'
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Navigation = () => {
     return ( 
@@ -13,6 +14,7 @@ const Navigation = () => {
                 </div>
 
                 <div className='d-flex align-items-center justify-content-center'>
+                    
                     <Link to="/login" id='login'>Login</Link>
                     <Link to="/cadastro/suasInformacoes" id='cadastro'>Criar conta</Link>
                 </div>
