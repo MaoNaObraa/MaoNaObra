@@ -14,14 +14,12 @@ function Login() {
   }
 
 function Mostrarsenha() {
-
   var caixaSenha = document.getElementById("senha")
   if (caixaSenha.type === "password") {
     caixaSenha.type = "text"
   } else {
     caixaSenha.type = "password"
   }
-  
 }
   
 
