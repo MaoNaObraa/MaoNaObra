@@ -1,7 +1,8 @@
 .principal-box-cadastro{
-    width: 60%;
+    width: 65%;
     margin: 0 auto;
-    padding: 25px 0;
+    padding: 25px 30px;
+    overflow: auto;
 }
 
 #placeholder-perfil{

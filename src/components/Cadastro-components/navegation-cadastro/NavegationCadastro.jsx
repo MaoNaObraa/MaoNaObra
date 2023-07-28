@@ -27,7 +27,7 @@ function NavegationCadastro() {
                 </NavLink>
 
 
-                <NavLink to="/cadastro/TipoCadastro" activeClassName='selected'>
+                <NavLink to="/cadastro/TipoCadastro" activeClassName='selected' >
                 <li className='d-flex align-items-center'>
                     <div className='step-number'>3</div>
                     <div className='step-info'><div className='step-info-number'>Terceiro Passo</div>Tipo de cadastro</div>
