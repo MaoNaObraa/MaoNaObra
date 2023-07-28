@@ -11,7 +11,7 @@ const Home = () => {
                 <Categories />
             </div>
 
-            <div id='principal-box-home'>
+            <div id='principal-box-home' className='pb-3'>
                 <div className='d-flex' id='pesquisar-box'>
                     <input type="text" placeholder='Pesquise um serviço de seu interesse' id='pesquisar-input'/>
                     <button id='pesquisar-button'>Pesquisar</button>
