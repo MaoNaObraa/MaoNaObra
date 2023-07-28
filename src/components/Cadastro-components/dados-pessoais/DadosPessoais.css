@@ -1,0 +1,16 @@
+.dadosPessoais{
+    height: 100vh;
+}
+
+.dadosPessoais::-webkit-scrollbar {
+    width: 10px;          
+  }
+  
+  .dadosPessoais::-webkit-scrollbar-track {
+    background: rgba(190, 190, 190, 0.671);    
+  }
+  
+  .dadosPessoais::-webkit-scrollbar-thumb {
+    background-color: var(--color-principal);
+    border-radius: 10px;
+  }

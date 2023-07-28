@@ -1,6 +1,6 @@
 import './SuasInformacoes.css'
 import Input from '../../../components/input/Input'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import PreviousNextButtons from '../previous-next/PreviousNextButtons';
 
 const SuasInformacoes = () => {
     return (
@@ -36,9 +36,9 @@ const SuasInformacoes = () => {
                     </form>
                 </div>
 
-                <div className='mt-4 d-flex justify-content-between'>
+                <div className='mt-4 d-flex align-items-center justify-content-between'>
                     <div></div>
-                    <Link to="/cadastro/dadosPessoais" className='next-step'>Próxima etapa</Link>
+                    <PreviousNextButtons text="Proxima etapa" link="/cadastro/dadosPessoais" type="next"/>
                 </div>
             </div>
         </>
