@@ -8,20 +8,20 @@ function Login() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  function enviar(){
+  function enviar() {
     console.log(email)
     console.log(senha)
   }
 
-function Mostrarsenha() {
-  var caixaSenha = document.getElementById("senha")
-  if (caixaSenha.type === "password") {
-    caixaSenha.type = "text"
-  } else {
-    caixaSenha.type = "password"
+  function Mostrarsenha() {
+    var caixaSenha = document.getElementById("senha")
+    if (caixaSenha.type === "password") {
+      caixaSenha.type = "text"
+    } else {
+      caixaSenha.type = "password"
+    }
   }
-}
-  
+
 
   return (
     <>
@@ -41,7 +41,7 @@ function Mostrarsenha() {
 
           <div>
             <div id='logo-login' className='d-flex flex-column align-items-center'>
-              <Link to="/"><img src="logo.png" width='90' alt="" /></Link> 
+              <Link to="/"><img src="logo.png" width='90' alt="" /></Link>
               <div className='text-center'>
                 <h2 className='mt-3' >Seja bem vindo</h2>
                 <p>Digite os dados para realizar o login</p>
@@ -49,13 +49,13 @@ function Mostrarsenha() {
             </div>
 
             <form action="" className='mt-3' id="forms-login">
-              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" value={email} onchange={ (event) => {setEmail(event.target.value)} }/>
-              <Input id='senha' label="Senha:" type='password' nome='senha' placeholder="Digite sua senha"value={senha} onchange={ (event)=> {setSenha(event.target.value) } }/>
+              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" value={email} onchange={(event) => { setEmail(event.target.value) }} />
+              <Input id='senha' label="Senha:" type='password' nome='senha' placeholder="Digite sua senha" value={senha} onchange={(event) => { setSenha(event.target.value) }} />
             </form>
 
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
               <div>
-                <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha}/>
+                <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha} />
                 <label htmlFor="mostrarSenha" className='p-2' class='nomeMostrar'>Mostrar senha</label>
               </div>
 
