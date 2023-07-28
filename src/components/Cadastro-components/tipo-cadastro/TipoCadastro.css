@@ -4,6 +4,8 @@
 }
 
 .tipo-cadastro-label{
+    max-width: 700px;
+    max-height: 300px;
     width: 500px;
     height: 200px;
     border-radius: 10px;

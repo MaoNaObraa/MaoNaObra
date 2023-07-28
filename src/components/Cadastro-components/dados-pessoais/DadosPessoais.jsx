@@ -5,7 +5,7 @@ import PreviousNextButtons from "../previous-next/PreviousNextButtons";
 const DadosPessoais = () => {
     return (
         <>
-            <div className='principal-box-cadastro d-flex flex-column dadosPessoais'>
+            <div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'>
                 <div className='first-text-cadastro mb-2'>
                     <h2 className='text-principal'>Suas informações</h2>
                     <p>Insira seus dados pessoais para melhor segurança</p>

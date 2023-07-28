@@ -7,13 +7,13 @@ import PreviousNextButtons from '../previous-next/PreviousNextButtons';
 const TipoCadastro = () => {
     return ( 
         <>
-            <div className='principal-box-cadastro d-flex flex-column'>
+            <div className='principal-box-cadastro d-flex flex-column justify-content-between'>
                 <div className='first-text-cadastro mb-3'>
                     <h2 className='text-principal text-center'>Selecione o seu tipo de cadastro</h2>
                 </div>
 
-                <div id="select-tipo-cadastro" className=' d-flex flex-column justify-content-between align-items-center'>
-                    <div>
+                <div id="select-tipo-cadastro" className=' d-flex flex-column justify-content-center align-items-center'>
+                    <div className='mb-3'>
                         <input type="checkbox" name="prestadorServico" id="prestadorServico" value="prestadorServico" className='hidden'/>
                         <label htmlFor="prestadorServico" id='prestadorServico-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column">
                             <img src={prestadorServico} width={80} className='mb-2'/>
