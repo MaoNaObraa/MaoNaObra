@@ -31,7 +31,7 @@ const DadosPessoais = () => {
                         <p>Insira seu endereço para melhor segurança</p>
                     </div>
                     <div className='d-flex w-100 justify-content-between'>
-                            <div style={{ width: "80%" }}><Input id="endereco" label="Endereço" type="text" nome="endereco" placeholder="Digite seu endereço" value="" onchange="" /></div>
+                            <div style={{ width: "80%" }}><Input id="endereco" label="Endereço" type="text" nome="endereco" placeholder="" value="" onchange="" /></div>
                             <div style={{ width: "19%" }}><Input id="numero" label="Número" type="text" nome="numero" placeholder="Digite o número" value="" onchange="" /></div>
                     </div>
                     <div className='d-flex w-100 justify-content-between'>
