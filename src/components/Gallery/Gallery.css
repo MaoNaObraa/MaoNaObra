@@ -1,0 +1,16 @@
+.caroussel-box{
+    cursor: grab;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.caroussel-images{
+    background-size: cover;
+    background-position: center;
+}
+.caroussel-images{
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    pointer-events: none;
+}
