@@ -1,13 +1,17 @@
 import Input from "../../input/Input";
 import './DadosPessoais.css'
 import PreviousNextButtons from "../previous-next/PreviousNextButtons";
+import { motion } from "framer-motion";
 
 const DadosPessoais = () => {
     return (
         <>
-            <div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'>
+            <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'
+            initial={{y: -200}}
+            animate={{ y: 0}}
+            exit={{y:-200}}>
                 <div className='first-text-cadastro mb-2'>
-                    <h2 className='text-principal'>Suas informações</h2>
+                    <h2 className='text-principal'>Dados pessoais</h2>
                     <p>Insira seus dados pessoais para melhor segurança</p>
                 </div>
 
@@ -45,7 +49,7 @@ const DadosPessoais = () => {
                     <PreviousNextButtons link="/cadastro/suasInformacoes"/>
                     <PreviousNextButtons text="Proxima etapa" link="/cadastro/tipoCadastro" type="next"/>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 }

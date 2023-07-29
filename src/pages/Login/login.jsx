@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Input from '../../components/input/Input'
 import './login.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
+import { motion } from 'framer-motion'
 
 function Login() {
   //      get     set
@@ -25,7 +26,11 @@ function Login() {
 
   return (
     <>
-      <main className='d-flex'>
+      <motion.main className='d-flex'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{opacity: 0}}
+      >
         <div id='side-blue' className='d-flex flex-column justify-content-center align-items-center'>
           <div className='text-light mb-5' id='bem-vindo-side-blue'>
             <h3>Seja bem vindo ao MãoNaObra</h3>
@@ -56,7 +61,7 @@ function Login() {
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
               <div>
                 <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha} />
-                <label htmlFor="mostrarSenha" className='p-2' class='nomeMostrar'>Mostrar senha</label>
+                <label htmlFor="mostrarSenha" className='p-2 nomeMostrar'>Mostrar senha</label>
               </div>
 
               <div id='esqueceu-senha'>
@@ -65,7 +70,7 @@ function Login() {
             </div>
 
             <div id="botao-login" className='w-100 mt-2'>
-              <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
+              <Link to="/"> <button className='rounded text-light' onClick={enviar}>Entrar na conta</button></Link>
             </div>
 
 
@@ -74,7 +79,7 @@ function Login() {
             </div>
           </div>
         </div>
-      </main>
+      </motion.main>
 
 
     </>

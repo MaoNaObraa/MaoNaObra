@@ -11,6 +11,7 @@
 
 .imagem {
     background-position: center;
+    background-size: cover;
     height: 150px;
     border-radius: 10px 10px 0 0;
 }
