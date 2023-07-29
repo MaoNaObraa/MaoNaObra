@@ -1,0 +1,49 @@
+#perfil-box-anuncio {
+    border-right: 1px solid gray;
+    width: 25%;
+    height: 87.5vh;
+}
+
+#perfil-box-anuncio h3 {
+    color: var(--color-principal);
+}
+
+#perfil-box-anuncio h6 {
+    width: 200px;
+}
+
+#foto-perfil-anuncio {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+#other-side-anuncio {
+    padding: 0 30px;
+    height: 87.5vh;
+    width: 85%;
+    margin-top: 30px;
+    max-width: 800px;
+    overflow-y: auto;
+}
+
+#other-side-anuncio::-webkit-scrollbar {
+    width: 10px;
+}
+
+#other-side-anuncio::-webkit-scrollbar-track {
+    background: rgba(190, 190, 190, 0.671);
+}
+
+#other-side-anuncio::-webkit-scrollbar-thumb {
+    background-color: var(--color-principal);
+    border-radius: 10px;
+}
+
+#gallery-box-anuncio {
+    border: 1px solid red;
+    height: 300px;
+}
