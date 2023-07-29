@@ -17,8 +17,6 @@ const Home = () => {
         setMostrarResultados(true)
     }
 
-    var desa
-
     // caso a barra de pesquisa esteja vazia, voltar para componente de cards
     useEffect(()=>{
         if(pesquisaValue == ""){
