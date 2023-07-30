@@ -1,9 +1,24 @@
 import Input from "../../input/Input";
 import './DadosPessoais.css'
 import PreviousNextButtons from "../previous-next/PreviousNextButtons";
+import { useState } from "react";
+
 import { motion } from "framer-motion";
 
+
 const DadosPessoais = () => {
+
+    const [dataNascimento,setDataNascimento] = useState ("")
+    const [cpf,setCpf] = useState ("")
+    const [rg,setRg] = useState ("")
+
+
+function enviar (){
+    console.log (dataNascimento)
+    console.log (cpf)
+    console.log (rg)
+
+}
     return (
         <>
             <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'
@@ -18,10 +33,10 @@ const DadosPessoais = () => {
                 <div>
                     <form action="">
                         <div className='d-flex w-100 justify-content-between'>
-                            <div style={{ width: "49%" }}><Input id="cpf" label="CPF" type="text" nome="cpf" placeholder="Digite seu cpf" value="" onchange="" /></div>
-                            <div style={{ width: "49%" }}><Input id="rg" label="RG" type="text" nome="rg" placeholder="Digite seu RG" value="" onchange="" /></div>
+                            <div style={{ width: "49%" }}><Input id="cpf" label="CPF" type="text" nome="cpf" placeholder="Digite seu cpf" value= {cpf} onchange={(event) => {setCpf (event.target.value)}}/></div>
+                            <div style={{ width: "49%" }}><Input id="rg" label="RG" type="text" nome="rg" placeholder="Digite seu RG" value= {rg} onchange={(event) => {setRg (event.target.value)}} /></div>
                         </div>
-                        <Input id="dataNascimento" label="Data de nascimento" type="date" nome="dataNascimento" placeholder="Digite sua data de nascimento" value="" onchange="" />
+                        <Input id="dataNascimento" label="Data de nascimento" type="date" nome="dataNascimento" placeholder="Digite sua data de nascimento" value={dataNascimento} onchange={(event) => {setDataNascimento (event.target.value)}} />
                     </form>
                 </div>
 
@@ -47,7 +62,7 @@ const DadosPessoais = () => {
 
                 <div className='mt-4 d-flex align-items-center justify-content-between'>
                     <PreviousNextButtons link="/cadastro/suasInformacoes"/>
-                    <PreviousNextButtons text="Proxima etapa" link="/cadastro/tipoCadastro" type="next"/>
+                    <PreviousNextButtons text="Proxima etapa" link="/cadastro/tipoCadastro" type="next" onclick={enviar}/>
                 </div>
             </motion.div>
         </>
