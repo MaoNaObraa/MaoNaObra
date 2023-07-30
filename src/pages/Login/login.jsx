@@ -13,6 +13,18 @@ function Login() {
     console.log(senha)
   }
 
+  function ValidarEmail(){
+
+  const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+
+  console.log (regexEmail.test(email))
+  
+
+}
+
+ 
+  
+
   function Mostrarsenha() {
     var caixaSenha = document.getElementById("senha")
     if (caixaSenha.type === "password") {
@@ -48,9 +60,9 @@ function Login() {
               </div>
             </div>
 
-            <form action="" className='mt-3' id="forms-login">
-              <Input id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" value={email} onchange={(event) => { setEmail(event.target.value) }} />
-              <Input id='senha' label="Senha:" type='password' nome='senha' placeholder="Digite sua senha" value={senha} onchange={(event) => { setSenha(event.target.value) }} />
+            <form action="" className='mt-3' id="forms-login" >
+              <Input   id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" onblur={ValidarEmail}  value={email} onchange={(event) => { setEmail(event.target.value) }} />
+              <Input   id='senha' label="Senha:" type='password' nome='senha' placeholder="Digite sua senha"  value={senha} onchange={(event) => { setSenha(event.target.value) }} />
             </form>
 
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
@@ -80,6 +92,6 @@ function Login() {
     </>
 
   )
-}
+  }
 
 export default Login
