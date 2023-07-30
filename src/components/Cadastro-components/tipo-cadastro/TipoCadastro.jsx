@@ -1,21 +1,30 @@
+import { useState } from 'react'
 import './TipoCadastro.css'
 import prestadorServico from '/prestadorServico-icon.png'
 import cliente from '/cliente-icon.png'
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { motion } from 'framer-motion';
 import PreviousNextButtons from '../previous-next/PreviousNextButtons';
-import { useState } from 'react'
+
 
 const TipoCadastro = () => {
-    const [prestadorServico, setPrestadorServico] = useState('')
-    const [cliente, setCliente] = useState('')
+    
+ const [tipodCadastro, setTipodCadastro] = useState({})
 
-    function enviar(){
-        console.log(cliente)
-        console.log(prestadorServico)
-    }
+ function handleChange(event) {
+    const { name, value } = event.target;
+    setTipodCadastro((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+}
+
+ function enviar(){
+    console.log(tipodCadastro)
+    
+ }
+
     return ( 
-
         <>
             <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between'
             initial={{y: -200}}
@@ -27,7 +36,7 @@ const TipoCadastro = () => {
 
                 <div id="select-tipo-cadastro" className=' d-flex flex-column justify-content-center align-items-center'>
                     <div className='mb-3'>
-                        <input type="checkbox" name="prestadorServico" id="prestadorServico" className='hidden' value={prestadorServico} onChange={(event) => {setPrestadorServico(event.target.value)}}/>
+                        <input type="checkbox" name="prestadorServico" id="prestadorServico" value={tipodCadastro}  onChange={handleChange} className = 'hidden'/>
                         <label htmlFor="prestadorServico" id='prestadorServico-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column">
                             <img src={prestadorServico} width={80} className='mb-2'/>
                             <h3>Prestador de serviço</h3>
@@ -35,7 +44,7 @@ const TipoCadastro = () => {
                         </label>
                     </div>
                     <div>
-                        <input type="checkbox" name="cliente" id="cliente"  className='hidden' value={cliente} onChange={(event) => {setCliente(event.target.value)}}/>
+                        <input type="checkbox" name="cliente" id="cliente" value={tipodCadastro}  onChange={handleChange} className='hidden'/>
                         <label htmlFor="cliente" id='cliente-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column" >
                             <img src={cliente} width={80} className='mb-2'/>
                             <h3>Cliente</h3>
@@ -50,6 +59,7 @@ const TipoCadastro = () => {
             </motion.div>
         </>
      );
+
 }
  
 export default TipoCadastro;
