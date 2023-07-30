@@ -4,9 +4,18 @@ import cliente from '/cliente-icon.png'
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { motion } from 'framer-motion';
 import PreviousNextButtons from '../previous-next/PreviousNextButtons';
+import { useState } from 'react'
 
 const TipoCadastro = () => {
+    const [prestadorServico, setPrestadorServico] = useState('')
+    const [cliente, setCliente] = useState('')
+
+    function enviar(){
+        console.log(cliente)
+        console.log(prestadorServico)
+    }
     return ( 
+
         <>
             <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between'
             initial={{y: -200}}
@@ -18,7 +27,7 @@ const TipoCadastro = () => {
 
                 <div id="select-tipo-cadastro" className=' d-flex flex-column justify-content-center align-items-center'>
                     <div className='mb-3'>
-                        <input type="checkbox" name="prestadorServico" id="prestadorServico" value="prestadorServico" className='hidden'/>
+                        <input type="checkbox" name="prestadorServico" id="prestadorServico" className='hidden' value={prestadorServico} onChange={(event) => {setPrestadorServico(event.target.value)}}/>
                         <label htmlFor="prestadorServico" id='prestadorServico-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column">
                             <img src={prestadorServico} width={80} className='mb-2'/>
                             <h3>Prestador de serviço</h3>
@@ -26,7 +35,7 @@ const TipoCadastro = () => {
                         </label>
                     </div>
                     <div>
-                        <input type="checkbox" name="cliente" id="cliente" value="cliente" className='hidden'/>
+                        <input type="checkbox" name="cliente" id="cliente"  className='hidden' value={cliente} onChange={(event) => {setCliente(event.target.value)}}/>
                         <label htmlFor="cliente" id='cliente-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column" >
                             <img src={cliente} width={80} className='mb-2'/>
                             <h3>Cliente</h3>
@@ -36,7 +45,7 @@ const TipoCadastro = () => {
                 </div>
                 <div className='mt-4 d-flex align-items-center justify-content-between'>
                     <PreviousNextButtons link="/cadastro/dadosPessoais"/>
-                    <PreviousNextButtons text="Proxima etapa" link="/" type="next"/>
+                    <PreviousNextButtons text="Proxima etapa" link="/" type="next" onclick={enviar}/>
                 </div>
             </motion.div>
         </>
