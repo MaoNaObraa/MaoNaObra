@@ -5,7 +5,7 @@ import estrela from "/star.svg"
 const PrestadorServico = ({ foto, nome, descricao, servicos, avaliacao }) => {
   return (
     <>
-      <Link to="/PresadorServicoPage">
+      <Link to="/prestadorServicoAnuncio">
         <div className='card'>
 
           <div className='imagem' style={{ backgroundImage: `url(${foto})` }}>

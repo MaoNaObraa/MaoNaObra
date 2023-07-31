@@ -70,7 +70,7 @@ function Login() {
             </div>
 
             <div id="botao-login" className='w-100 mt-2'>
-              <Link to="/"> <button className='rounded text-light' onClick={enviar}>Entrar na conta</button></Link>
+              <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
             </div>
 
 
