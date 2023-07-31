@@ -2,29 +2,31 @@ import { useState } from 'react'
 import Input from '../../components/input/Input'
 import './login.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
 
 function Login() {
   //      get     set
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
+  const validateEmail = yup.object().shape({
+    email: yup.string().email("Digite um email válido").required("Campo obrigatório. Informe um email válido"),
+    senha: yup.string().required("Campo obrigatório")
+  })
+
+  const{register, handleSubmit, formState: { errors}} = useForm ({
+    resolver: yupResolver(validateEmail)
+  })
+
+  const addPost = Data => console.log(Data)
+
   function enviar() {
     console.log(email)
     console.log(senha)
   }
-
-  function ValidarEmail(){
-
-  const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
-
-  console.log (regexEmail.test(email))
-  
-
-}
-
- 
-  
-
+   
   function Mostrarsenha() {
     var caixaSenha = document.getElementById("senha")
     if (caixaSenha.type === "password") {
@@ -60,15 +62,23 @@ function Login() {
               </div>
             </div>
 
-            <form action="" className='mt-3' id="forms-login" >
-              <Input   id='email' label="Email:" type="email" nome='email' placeholder="Digite seu e-mail" onblur={ValidarEmail}  value={email} onchange={(event) => { setEmail(event.target.value) }} />
-              <Input   id='senha' label="Senha:" type='password' nome='senha' placeholder="Digite sua senha"  value={senha} onchange={(event) => { setSenha(event.target.value) }} />
-            </form>
+            <form action="" className='mt-3' id="forms-login" onSubmit={handleSubmit(addPost)}>
+              <div className='d-flex flex-column'>
+              <label htmlFor="">Email</label>
+              <input id='email' type="email" placeholder='Digite seu email' name='email' className='d-flex rounded input-component ' {...register('email')}/>
+              <p className='error-message'>{errors.email?.message}</p>
+              </div>
+              <div className='d-flex flex-column'> 
+              <label htmlFor="">Senha</label>
+              <input id='senha'type="password" placeholder='Digita sua senha' name='senha' className='d-flex  rounded input-component' {...register('senha')} />
+              <p className='error-message'>{errors.senha?.message}</p>
+              </div>
+            
 
             <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
               <div>
                 <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha} />
-                <label htmlFor="mostrarSenha" className='p-2' class='nomeMostrar'>Mostrar senha</label>
+                <label htmlFor="mostrarSenha" className='p-2 nomeMostrar'>Mostrar senha</label>
               </div>
 
               <div id='esqueceu-senha'>
@@ -77,9 +87,9 @@ function Login() {
             </div>
 
             <div id="botao-login" className='w-100 mt-2'>
-              <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
+              <button className='rounded text-light' type='submit'>Entrar na conta</button>
             </div>
-
+            </form>
 
             <div id='cadastro-login' className='text-center mt-4'>
               <h6>Não tem login? <Link to="/cadastro/suasInformacoes" id='cadastre-se-login'>Cadastre-se</Link></h6>
@@ -88,7 +98,7 @@ function Login() {
         </div>
       </main>
 
-
+     
     </>
 
   )
