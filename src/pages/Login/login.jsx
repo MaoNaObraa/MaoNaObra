@@ -8,8 +8,7 @@ import * as yup from "yup"
 
 function Login() {
   //      get     set
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
+  const[login, setLogin] = useState([])
 
   const validateEmail = yup.object().shape({
     email: yup.string().email("Digite um email válido").required("Campo obrigatório. Informe um email válido"),
@@ -20,11 +19,10 @@ function Login() {
     resolver: yupResolver(validateEmail)
   })
 
-  const addPost = Data => console.log(Data)
+  const addPost = Data => setLogin(Data)
 
   function enviar() {
-    console.log(email)
-    console.log(senha)
+    console.log(login)
   }
    
   function Mostrarsenha() {
@@ -87,7 +85,7 @@ function Login() {
             </div>
 
             <div id="botao-login" className='w-100 mt-2'>
-              <button className='rounded text-light' type='submit'>Entrar na conta</button>
+              <button className='rounded text-light' type='submit' onClick={enviar} disabled={!login}>Entrar na conta</button>
             </div>
             </form>
 
