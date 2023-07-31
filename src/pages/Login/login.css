@@ -21,11 +21,7 @@ main{
     height: 38px;
     padding: 10px;
 }
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 4px;
-  }
+
 
 #form-login{
     flex: 1;

@@ -6,25 +6,25 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
+const validationSchema = yup.object().shape({
+  email: yup.string().email("Digite um email válido").required("Campo obrigatório."),
+  senha: yup.string().required("Campo obrigatório.")
+})
+
+
 function Login() {
-  //      get     set
-  const[login, setLogin] = useState([])
+  const[loginDados, setLoginDados] = useState({})
 
-  const validateEmail = yup.object().shape({
-    email: yup.string().email("Digite um email válido").required("Campo obrigatório. Informe um email válido"),
-    senha: yup.string().required("Campo obrigatório")
-  })
+  const { handleSubmit, control, formState: { errors } } = useForm({
+    resolver: yupResolver(validationSchema)
+  });
 
-  const{register, handleSubmit, formState: { errors}} = useForm ({
-    resolver: yupResolver(validateEmail)
-  })
-
-  const addPost = Data => setLogin(Data)
+  const addPost = Data => { setLoginDados(Data) }
 
   function enviar() {
-    console.log(login)
+    console.log(loginDados)
   }
-   
+
   function Mostrarsenha() {
     var caixaSenha = document.getElementById("senha")
     if (caixaSenha.type === "password") {
@@ -62,31 +62,43 @@ function Login() {
 
             <form action="" className='mt-3' id="forms-login" onSubmit={handleSubmit(addPost)}>
               <div className='d-flex flex-column'>
-              <label htmlFor="">Email</label>
-              <input id='email' type="email" placeholder='Digite seu email' name='email' className='d-flex rounded input-component ' {...register('email')}/>
-              <p className='error-message'>{errors.email?.message}</p>
+                <Input
+                  id="email"
+                  label="Email"
+                  type="text"
+                  name="email"
+                  placeholder=""
+                  validation={{ control }}
+                  error={errors.email}
+                />
               </div>
-              <div className='d-flex flex-column'> 
-              <label htmlFor="">Senha</label>
-              <input id='senha'type="password" placeholder='Digita sua senha' name='senha' className='d-flex  rounded input-component' {...register('senha')} />
-              <p className='error-message'>{errors.senha?.message}</p>
+              <div className='d-flex flex-column'>
+                <Input
+                  id="senha"
+                  label="Senha"
+                  type="password"
+                  name="senha"
+                  placeholder=""
+                  validation={{ control }}
+                  error={errors.senha}
+                />
               </div>
-            
 
-            <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
-              <div>
-                <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha} />
-                <label htmlFor="mostrarSenha" className='p-2 nomeMostrar'>Mostrar senha</label>
+
+              <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
+                <div>
+                  <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha} />
+                  <label htmlFor="mostrarSenha" className='p-2 nomeMostrar'>Mostrar senha</label>
+                </div>
+
+                <div id='esqueceu-senha'>
+                  <Link to="/recuperarSenha">Esqueceu senha?</Link>
+                </div>
               </div>
 
-              <div id='esqueceu-senha'>
-                <Link to="/recuperarSenha">Esqueceu senha?</Link>
+              <div id="botao-login" className='w-100 mt-2'>
+                <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
               </div>
-            </div>
-
-            <div id="botao-login" className='w-100 mt-2'>
-              <button className='rounded text-light' type='submit' onClick={enviar} disabled={!login}>Entrar na conta</button>
-            </div>
             </form>
 
             <div id='cadastro-login' className='text-center mt-4'>
@@ -96,10 +108,10 @@ function Login() {
         </div>
       </main>
 
-     
+
     </>
 
   )
-  }
+}
 
 export default Login
