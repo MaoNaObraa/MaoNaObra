@@ -1,8 +1,24 @@
 import Input from "../../input/Input";
 import './DadosPessoais.css'
 import PreviousNextButtons from "../previous-next/PreviousNextButtons";
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+
+const validationSchema = yup.object().shape({
+    cpf: yup.string().required("Campo obrigatório."),
+  })
 
 const DadosPessoais = () => {
+
+   
+
+    const { handleSubmit, control, formState: { errors } } = useForm({
+        resolver: yupResolver(validationSchema)
+      });
+      
+      const addPost = Data => { console.log(Data) }
+
     return (
         <>
             <div className='principal-box-cadastro d-flex flex-column justify-content-between '>
@@ -13,16 +29,16 @@ const DadosPessoais = () => {
                     </div>
 
                     <div>
-                        <form action="">
+                        <form action="" onSubmit={handleSubmit(addPost)}>
                             <div className='d-flex w-100 justify-content-between'>
-                                <div style={{ width: "49%" }}><Input id="cpf" label="CPF" type="text" nome="cpf" placeholder="Digite seu cpf" value="" onchange="" /></div>
-                                <div style={{ width: "49%" }}><Input id="rg" label="RG" type="text" nome="rg" placeholder="Digite seu RG" value="" onchange="" /></div>
+                                <div style={{ width: "49%" }}><Input id="cpf" label="CPF" type="text" name="cpf" placeholder="Digite seu cpf" validation={{ control }}  error={errors.cpf} /></div>
+                                {/* <div style={{ width: "49%" }}><Input id="rg" label="RG" type="text" nome="rg" placeholder="Digite seu RG" /></div> */}
                             </div>
-                            <Input id="dataNascimento" label="Data de nascimento" type="date" nome="dataNascimento" placeholder="Digite sua data de nascimento" value="" onchange="" />
+                            {/* <Input id="dataNascimento" label="Data de nascimento" type="date" name="dataNascimento" placeholder="Digite sua data de nascimento" /> */}
                         </form>
                     </div>
                 </div>
-                <div className="mt-2">
+                {/* <div className="mt-2">
                     <div className='first-text-cadastro mb-3'>
                         <h2 className='text-principal'>Endereço</h2>
                         <p>Insira seu endereço para melhor segurança</p>
@@ -40,7 +56,7 @@ const DadosPessoais = () => {
                         <div style={{ width: "49%" }}><Input id="cidade" label="Cidade" type="text" nome="cidade" placeholder="Digite a sua cidade" value="" onchange="" /></div>
                     </div>
                     <Input id="complemento" label="Complemento" type="text" nome="complemento" placeholder="Digite o complemento" value="" onchange="" />
-                </div>
+                </div> */}
 
                 <div className='mt-4 d-flex align-items-center justify-content-between'>
                     <PreviousNextButtons link="/cadastro/suasInformacoes" />

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Input from '../../components/input/Input'
 import './login.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+
 
 const validationSchema = yup.object().shape({
   email: yup.string().email("Digite um email válido").required("Campo obrigatório."),
@@ -13,17 +14,17 @@ const validationSchema = yup.object().shape({
 
 
 function Login() {
+
   const[loginDados, setLoginDados] = useState({})
+  // useEffect(() => {}, [loginDados])
 
   const { handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
-  const addPost = Data => { setLoginDados(Data) }
+  const addPost = Data => { console.log(Data) }
 
-  function enviar() {
-    console.log(loginDados)
-  }
+  
 
   function Mostrarsenha() {
     var caixaSenha = document.getElementById("senha")
@@ -97,7 +98,7 @@ function Login() {
               </div>
 
               <div id="botao-login" className='w-100 mt-2'>
-                <button className='rounded text-light' onClick={enviar}>Entrar na conta</button>
+                <button className='rounded text-light' type='submit'>Entrar na conta</button>
               </div>
             </form>
 
