@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import {useState, useEffect} from 'react'
 
 const validationSchema = yup.object().shape({
     nomeCompleto: yup.string().required("Campo obrigatório."),
@@ -18,27 +19,43 @@ const validationSchema = yup.object().shape({
 
 const SuasInformacoes = () => {
 
-    <Link to="/cadastro/dadosPessoais"></Link>
+  const [formData, setFormData] = useState({});
+  const { handleSubmit, control, formState: { errors }, setValue } = useForm({
+    resolver: yupResolver(validationSchema),
+    defaultValues: formData // Preencher com os dados do estado formData, se houver
+  });
 
-    const { handleSubmit, control, formState: { errors } } = useForm({
-        resolver: yupResolver(validationSchema)
-    });
+  const history = useHistory();
+  
 
-    const addPost = (data) => {
-        console.log(data);
-        if (Object.keys(errors).length === 0) { 
-            enviarSuasInformacoes(); 
-        } else {
-            console.log("Existem erros no formulário.");
-        }
+  useEffect(() => {
+    // Verificar se existem dados no localStorage e, se existirem, atualizar o formData
+    const storedData = localStorage.getItem('dadosPessoaisFormData');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setFormData(parsedData);
+      // Preencher os campos com os valores armazenados
+      Object.keys(parsedData).forEach((fieldName) => {
+        setValue(fieldName, parsedData[fieldName]);
+      });
     }
+  }, [setValue]);
 
-    const history = useHistory();
-
-    function enviarSuasInformacoes() {
-        // Redirecionar para a próxima página após a submissão do formulário
-        history.push('/cadastro/dadosPessoais');
+  const addPost = (data) => {
+    console.log(data);
+    if (Object.keys(errors).length === 0) {
+      // Armazenar os dados preenchidos no estado formData
+      setFormData(data);
+      // Armazenar os dados no localStorage para uso posterior
+      localStorage.setItem('dadosPessoaisFormData', JSON.stringify(data));
+      // Redirecionar para a próxima página após a submissão do formulário
+      history.push('/cadastro/dadosPessoais');
+    } else {
+      console.log('Existem erros no formulário.');
     }
+  };
+
+
     return (
         <>
             <div className='principal-box-cadastro d-flex flex-column justify-content-between'>
@@ -46,7 +63,6 @@ const SuasInformacoes = () => {
                     <h2 className='text-principal'>Suas informações</h2>
                     <p>Insira suas informações básicas para o cadastro</p>
                 </div>
-
                 <div className='d-flex align-items-center'>
                     <div>
                         <label htmlFor="image-perfil" id='placeholder-perfil'></label>
@@ -76,8 +92,8 @@ const SuasInformacoes = () => {
                             <div style={{ width: "49%" }}><Input id="senha-cadastro" label="Senha:" type="text" name="senha" placeholder="Digite sua senha"  validation={{ control }} error={errors.senha}/></div>
                             <div style={{ width: "49%" }}><Input id="senha-confirm-cadastro" label="Confirmar senha:" type="text" name="senhaConfirm" placeholder="Digite sua senha novamente" validation={{ control }} error={errors.senhaConfirm}/></div>
                         </div> 
-                    
-                
+
+
 
                 <div className='mt-4 d-flex align-items-center justify-content-between w-100'>
                     <div></div>
@@ -87,9 +103,8 @@ const SuasInformacoes = () => {
                 </div>
                 <div></div>
             </div>
-            
+
         </>
     );
 }
-
 export default SuasInformacoes;
