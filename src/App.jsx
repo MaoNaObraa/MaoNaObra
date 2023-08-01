@@ -6,6 +6,7 @@ import Login from './pages/Login/login';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import { AnimatePresence } from 'framer-motion';
 import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
+import AnuncioPage from './pages/anuncioPage/anuncioPage';
 
 function App() {
 
@@ -36,6 +37,10 @@ function App() {
 
               <Route path="/recuperarSenha" exact>
                 <ForgotPassword />
+              </Route>
+
+              <Route path="/anuncioPage" exact>
+                <AnuncioPage />
               </Route>
 
               <Route path="/" exact>
