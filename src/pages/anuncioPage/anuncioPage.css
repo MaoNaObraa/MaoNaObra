@@ -1,0 +1,54 @@
+#principal-anuncio{
+    overflow-y: auto;
+    height: 87vh;
+}
+
+#text-Principal{
+font-weight: bold;
+color: #0c6a96;
+}
+
+#caixa1{
+width:600px;
+height:200px;
+}
+
+#caixa2{
+    width: 600px;
+}
+
+#caixa3{
+    width: 600px;
+}
+
+#text2{
+    font-weight: bold;
+    color: #0c6a96;
+}
+
+#email{
+    width:600px;
+}
+
+#Celular{
+    width:600px; 
+}
+
+.caixa-titulo{
+    font-weight: bold;     
+}
+
+.caixa-descrição{
+    height: 380px;
+    width: 400px;
+    color: black;
+    border-radius:10px ;
+    background-color:#e2e0e0;
+    padding: 20px;
+   
+}
+
+.primeiro{
+    color: #0c6a96;
+    
+}

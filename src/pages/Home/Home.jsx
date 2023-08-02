@@ -4,6 +4,7 @@ import Categories from '../../components/categories-filter/categories/Categories
 import FilterSearch from '../../components/categories-filter/filter/FilterSearch';
 import './Home.css'
 import SearchResults from '../../components/Home-components/searchResults/searchResults';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     // recuperando os dados da barra de pesquisa
@@ -24,7 +25,11 @@ const Home = () => {
     }, [pesquisaValue])
 
     return (
-        <div className='container d-flex justify-content-between' id='home-box'>
+        <motion.div className='container d-flex justify-content-between' id='home-box'
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+        >
             <div id='categories-box'>
                 <FilterSearch />
                 <Categories />
@@ -43,7 +48,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

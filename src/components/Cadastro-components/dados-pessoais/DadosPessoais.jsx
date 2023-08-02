@@ -1,4 +1,5 @@
 import Input from "../../input/Input";
+import { motion } from "framer-motion";
 import './DadosPessoais.css';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -67,7 +68,7 @@ const DadosPessoais = () => {
 
   return (
     <>
-      <div className='principal-box-cadastro d-flex flex-column justify-content-between'>
+      <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'
         <div>
           <div className='first-text-cadastro mb-2'>
             <h2 className='text-principal'>Suas informações</h2>
@@ -129,7 +130,7 @@ const DadosPessoais = () => {
           </form>
         </div>
         <div></div>
-      </div>
+      </motion.div>
     </>
   );
 }

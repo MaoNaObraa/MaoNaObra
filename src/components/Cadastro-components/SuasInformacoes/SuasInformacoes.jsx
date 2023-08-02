@@ -1,5 +1,7 @@
 import './SuasInformacoes.css'
 import Input from '../../../components/input/Input'
+import PreviousNextButtons from '../previous-next/PreviousNextButtons';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -14,7 +16,6 @@ const validationSchema = yup.object().shape({
     senha: yup.string().min(8, 'A senha deve ter pelo menos 8 caracteres.').max(24, 'A senha deve conter 24 caracteres no máximo').required('Campo obrigatório'),
     senhaConfirm: yup.string().oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais.').required('Campo obrigatório')
   })
-
 
 
 const SuasInformacoes = () => {
@@ -58,7 +59,11 @@ const SuasInformacoes = () => {
 
     return (
         <>
-            <div className='principal-box-cadastro d-flex flex-column justify-content-between'>
+            <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between'
+                initial={{y: -200}}
+                animate={{ y: 0}}
+                exit={{y:-200}}
+            >
                 <div className='first-text-cadastro mb-3'>
                     <h2 className='text-principal'>Suas informações</h2>
                     <p>Insira suas informações básicas para o cadastro</p>
@@ -94,16 +99,15 @@ const SuasInformacoes = () => {
                         </div> 
 
 
-
                 <div className='mt-4 d-flex align-items-center justify-content-between w-100'>
                     <div></div>
                     <button id='button-suasInfos'  type='button' onClick={handleSubmit(addPost)} className='rounded text-light mt-2' >Próxima etapa </button>
                 </div>
                 </form>
                 </div>
+            </motion.div>
                 <div></div>
             </div>
-
         </>
     );
 }

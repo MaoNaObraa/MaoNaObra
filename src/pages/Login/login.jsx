@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Input from '../../components/input/Input'
 import './login.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
+import { motion } from 'framer-motion'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -38,7 +39,11 @@ function Login() {
 
   return (
     <>
-      <main className='d-flex'>
+      <motion.main className='d-flex'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{opacity: 0}}
+      >
         <div id='side-blue' className='d-flex flex-column justify-content-center align-items-center'>
           <div className='text-light mb-5' id='bem-vindo-side-blue'>
             <h3>Seja bem vindo ao MãoNaObra</h3>
@@ -107,7 +112,7 @@ function Login() {
             </div>
           </div>
         </div>
-      </main>
+      </motion.main>
 
 
     </>
