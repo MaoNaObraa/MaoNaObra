@@ -45,3 +45,12 @@
     align-items: center;
     justify-content: center;
 }
+#button-suasInfos{
+    border: 0;
+    background-color: var(--color-principal);
+    height: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 400ms;
+    width: 250px;
+}

@@ -9,3 +9,9 @@
 #input-group{
     margin-bottom: 8px;
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+  }
