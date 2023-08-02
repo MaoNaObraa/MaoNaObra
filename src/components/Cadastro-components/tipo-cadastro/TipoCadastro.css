@@ -40,3 +40,19 @@
     color: #FF9E41;
     margin: 0;
 }
+#buttonVoltarDadosPessoais{
+    display: flex;
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    align-items: center;
+    transition: all 400ms;
+    justify-content: center;
+    font-weight: bold;
+    color: rgb(92, 92, 92);
+    border: 0;
+}
+.erro-tipo-cadastro {
+    color: red;
+    text-align: center;
+  }
