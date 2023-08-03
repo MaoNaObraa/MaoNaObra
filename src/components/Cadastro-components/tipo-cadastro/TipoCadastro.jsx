@@ -1,12 +1,56 @@
-import './TipoCadastro.css'
-import prestadorServico from '/prestadorServico-icon.png'
-import cliente from '/cliente-icon.png'
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { motion } from 'framer-motion';
-import PreviousNextButtons from '../previous-next/PreviousNextButtons';
+import './TipoCadastro.css';
+import prestadorServico from '/prestadorServico-icon.png';
+import cliente from '/cliente-icon.png';
+import { useHistory } from "react-router-dom";
+import { useState } from 'react';
 
-const TipoCadastro = () => {
-    return ( 
+const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
+
+    const history = useHistory();
+    const [tipoCadastro, setTipoCadastro] = useState('');
+    const [erroTipoCadastro, setErroTipoCadastro] = useState('');
+    function voltarParaDadosPessoais() {
+        history.push('/cadastro/dadosPessoais');
+    }
+    
+
+    function validacaoTipoCadastro() {
+        if (!tipoCadastro) {
+            setErroTipoCadastro('Por favor, selecione um tipo de cadastro antes de prosseguir.');
+        } else {
+            setErroTipoCadastro('');
+            const user = {
+                "name": suasInformacoesDados.nomeCompleto,
+            "email": suasInformacoesDados.email,
+            "cellphone": suasInformacoesDados.celular,
+            "password": suasInformacoesDados.senha,
+            "confirmPassword": suasInformacoesDados.senhaConfirm,
+            "CPF": dadosPessoaisDados.cpf,
+            "RG":  dadosPessoaisDados.rg,
+            "birthDate":  dadosPessoaisDados.dataNascimento,
+             "completeAdress": dadosPessoaisDados.endereco,
+             "CEP": dadosPessoaisDados.cep,
+             "number": dadosPessoaisDados.numero,
+             "neighborhood": dadosPessoaisDados.bairro,
+             "locationState": dadosPessoaisDados.estado,
+             "complement": dadosPessoaisDados.complemento,
+             "city": dadosPessoaisDados.cidade,
+             "tipoCadastro": tipoCadastro,
+            }
+            if (tipoCadastro === 'prestadorServico') {
+                console.log(user);
+                 history.push('/anuncioPage');
+            } else if (tipoCadastro === 'cliente') {
+                console.log(user);
+                history.push('/');
+            }
+        }
+    }
+
+
+
+    return (
         <>
             <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between'
             initial={{y: -200}}
@@ -18,29 +62,38 @@ const TipoCadastro = () => {
 
                 <div id="select-tipo-cadastro" className=' d-flex flex-column justify-content-center align-items-center'>
                     <div className='mb-3'>
-                        <input type="checkbox" name="prestadorServico" id="prestadorServico" value="prestadorServico" className='hidden'/>
+                        <input type="radio" name="tipoCadastro" id="prestadorServico" value="prestadorServico" className='hidden' onChange={() => {
+                            setTipoCadastro('prestadorServico');
+                            setErroTipoCadastro('');
+                        }} />
                         <label htmlFor="prestadorServico" id='prestadorServico-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column">
-                            <img src={prestadorServico} width={80} className='mb-2'/>
+                            <img src={prestadorServico} width={80} className='mb-2' />
                             <h3>Prestador de serviço</h3>
                             <p>Você quer divulgar seu serviço?</p>
                         </label>
                     </div>
                     <div>
-                        <input type="checkbox" name="cliente" id="cliente" value="cliente" className='hidden'/>
+                        <input type="radio" name="tipoCadastro" id="cliente" value="cliente" className='hidden' onChange={() => {
+                            setTipoCadastro('cliente');
+                            setErroTipoCadastro('');
+                        }} />
                         <label htmlFor="cliente" id='cliente-checkbox' className="tipo-cadastro-label d-flex align-items-center justify-content-center flex-column" >
-                            <img src={cliente} width={80} className='mb-2'/>
+                            <img src={cliente} width={80} className='mb-2' />
                             <h3>Cliente</h3>
                             <p>Você quer procurar um serviço?</p>
                         </label>
+                        {erroTipoCadastro && <p className="erro-tipo-cadastro text-center">{erroTipoCadastro}</p>}
                     </div>
                 </div>
-                <div className='mt-4 d-flex align-items-center justify-content-between'>
-                    <PreviousNextButtons link="/cadastro/dadosPessoais"/>
-                    <PreviousNextButtons text="Proxima etapa" link="/" type="next"/>
+                <div className='mt-4 d-flex flex-column align-items-center'>
+                    <div className='d-flex align-items-center justify-content-between w-100'>
+                        <button id='buttonVoltarDadosPessoais' onClick={voltarParaDadosPessoais}>Voltar</button>
+                        <button id='button-suasInfos' className='rounded text-light mt-2' onClick={validacaoTipoCadastro}>Próxima etapa</button>
+                    </div>
                 </div>
             </motion.div>
         </>
-     );
+    );
 }
- 
+
 export default TipoCadastro;

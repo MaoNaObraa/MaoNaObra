@@ -9,6 +9,20 @@ main{
     height: 100vh;
 }
 
+#email{
+    border: 1px solid gray;
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+}
+#senha{
+    border: 1px solid gray;
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+}
+
+
 #form-login{
     flex: 1;
 }
