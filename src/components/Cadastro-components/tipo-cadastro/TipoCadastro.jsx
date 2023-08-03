@@ -10,10 +10,10 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
     const history = useHistory();
     const [tipoCadastro, setTipoCadastro] = useState('');
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
+    
     function voltarParaDadosPessoais() {
         history.push('/cadastro/dadosPessoais');
     }
-    
 
     function validacaoTipoCadastro() {
         if (!tipoCadastro) {
@@ -40,14 +40,15 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
             }
             if (tipoCadastro === 'prestadorServico') {
                 console.log(user);
-                 history.push('/anuncioPage');
-            } else if (tipoCadastro === 'cliente') {
+                history.push('/anuncioPage');
+              } else if (tipoCadastro === 'cliente') {
                 console.log(user);
                 history.push('/');
+              }
+              localStorage.removeItem('suasInformacoesFormData'); // Remover dados de SuasInformacoes
+              localStorage.removeItem('dadosPessoaisFormData'); // Remover dados de DadosPessoais
             }
-        }
-    }
-
+          }
 
 
     return (

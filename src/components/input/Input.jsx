@@ -1,9 +1,8 @@
 import './Input.css';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import InputMask from 'react-input-mask';
 
-const Input = ({ id, label, type, name, placeholder, validation, error, mask }) => {
+const Input = ({ id, label, type, name, placeholder, validation, error }) => {
   return (
     <div className='d-flex flex-column' id='input-group'>
       <label htmlFor={id}>{label}</label>
@@ -12,8 +11,7 @@ const Input = ({ id, label, type, name, placeholder, validation, error, mask }) 
         control={validation.control}
         defaultValue=""
         render={({ field }) => (
-          <InputMask
-            mask={mask}
+          <input
             {...field}
             id={id}
             type={type}
