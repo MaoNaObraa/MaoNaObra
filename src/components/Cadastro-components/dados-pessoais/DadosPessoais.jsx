@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
   estado: yup.string().required('Campo obrigatório.'),
   bairro: yup.string().required('Campo obrigatório.'),
   cidade: yup.string().required('Campo obrigatório.'),
-  complemento: yup.string()
+  complemento: yup.string().required('O campo é obrigatório.')
   });
 
 
@@ -30,7 +30,7 @@ const DadosPessoais = ({onSaveDadosPessoais}) => {
     const storedData = localStorage.getItem('dadosPessoaisFormData');
     return storedData ? JSON.parse(storedData) : {};
   });
-  
+
 
 
   
