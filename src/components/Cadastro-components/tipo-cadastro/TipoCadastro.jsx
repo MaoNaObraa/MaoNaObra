@@ -13,6 +13,7 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
     function voltarParaDadosPessoais() {
         history.push('/cadastro/dadosPessoais');
     }
+    
 
     function validacaoTipoCadastro() {
         if (!tipoCadastro) {
