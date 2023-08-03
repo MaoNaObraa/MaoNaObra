@@ -1,33 +1,58 @@
-
 import { motion } from 'framer-motion';
 import './TipoCadastro.css';
 import prestadorServico from '/prestadorServico-icon.png';
 import cliente from '/cliente-icon.png';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 
-const TipoCadastro = () => {
+const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
+
     const history = useHistory();
     const [tipoCadastro, setTipoCadastro] = useState('');
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
 
+    
+
     function voltarParaDadosPessoais() {
-        history.push('/cadastro/dadosPessoais'); // Redirecionar para a página "dados Pessoais"
+        history.push('/cadastro/dadosPessoais');
     }
 
     function validacaoTipoCadastro() {
         if (!tipoCadastro) {
             setErroTipoCadastro('Por favor, selecione um tipo de cadastro antes de prosseguir.');
         } else {
-            setErroTipoCadastro(''); // Limpar a mensagem de erro se houver algum valor selecionado
-
+            setErroTipoCadastro('');
+            const user = {
+                "name": suasInformacoesDados.nomeCompleto,
+            "email": suasInformacoesDados.email,
+            "cellphone": suasInformacoesDados.celular,
+            "password": suasInformacoesDados.senha,
+            "confirmPassword": suasInformacoesDados.senhaConfirm,
+            "CPF": dadosPessoaisDados.cpf,
+            "RG":  dadosPessoaisDados.rg,
+            "birthDate":  dadosPessoaisDados.dataNascimento,
+             "completeAdress": dadosPessoaisDados.endereco,
+             "CEP": dadosPessoaisDados.cep,
+             "number": dadosPessoaisDados.numero,
+             "neighborhood": dadosPessoaisDados.bairro,
+             "locationState": dadosPessoaisDados.estado,
+             "complement": dadosPessoaisDados.complemento,
+             "city": dadosPessoaisDados.cidade,
+             "tipoCadastro": tipoCadastro,
+            }
             if (tipoCadastro === 'prestadorServico') {
-                history.push('/anuncioPage'); // Redirecionar para a página de prestador de serviço
+                console.log(user);
+                // Fazer o que for necessário com os dados
+                // history.push('/anuncioPage');
             } else if (tipoCadastro === 'cliente') {
-                history.push('/'); // Redirecionar para a página de cliente
+                console.log(user);
+                // Fazer o que for necessário com os dados
+                // history.push('/');
             }
         }
     }
+
+
 
     return (
         <>
@@ -61,12 +86,14 @@ const TipoCadastro = () => {
                             <h3>Cliente</h3>
                             <p>Você quer procurar um serviço?</p>
                         </label>
-                        {erroTipoCadastro && <p className="erro-tipo-cadastro">{erroTipoCadastro}</p>}
+                        {erroTipoCadastro && <p className="erro-tipo-cadastro text-center">{erroTipoCadastro}</p>}
                     </div>
                 </div>
-                <div className='mt-4 d-flex align-items-center justify-content-between'>
-                    <button id='buttonVoltarDadosPessoais' onClick={voltarParaDadosPessoais}>Voltar</button>
-                    <button id='button-suasInfos' className='rounded text-light mt-2' onClick={validacaoTipoCadastro}>Próxima etapa</button>
+                <div className='mt-4 d-flex flex-column align-items-center'>
+                    <div className='d-flex align-items-center justify-content-between w-100'>
+                        <button id='buttonVoltarDadosPessoais' onClick={voltarParaDadosPessoais}>Voltar</button>
+                        <button id='button-suasInfos' className='rounded text-light mt-2' onClick={validacaoTipoCadastro}>Próxima etapa</button>
+                    </div>
                 </div>
             </motion.div>
         </>
