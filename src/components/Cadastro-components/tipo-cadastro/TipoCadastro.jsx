@@ -10,9 +10,6 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
     const history = useHistory();
     const [tipoCadastro, setTipoCadastro] = useState('');
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
-
-    
-
     function voltarParaDadosPessoais() {
         history.push('/cadastro/dadosPessoais');
     }
@@ -42,12 +39,10 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
             }
             if (tipoCadastro === 'prestadorServico') {
                 console.log(user);
-                // Fazer o que for necessário com os dados
-                // history.push('/anuncioPage');
+                 history.push('/anuncioPage');
             } else if (tipoCadastro === 'cliente') {
                 console.log(user);
-                // Fazer o que for necessário com os dados
-                // history.push('/');
+                history.push('/');
             }
         }
     }
