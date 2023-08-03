@@ -1,29 +1,40 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Input from '../../components/input/Input'
 import './login.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { motion } from 'framer-motion'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
+import {useHistory} from "react-router-dom"
 import * as yup from "yup"
 
+import {Context} from "../../../context/userContext"
 
 const validationSchema = yup.object().shape({
   email: yup.string().email("Digite um email válido").required("Campo obrigatório."),
-  senha: yup.string().required("Campo obrigatório.")
+  password: yup.string().required("Campo obrigatório.")
 })
 
 
 function Login() {
+  const[user, setUser] = useState()
+  const {login} = useContext(Context)
+  const history = useHistory()
 
-  const[loginDados, setLoginDados] = useState({})
-  // useEffect(() => {}, [loginDados])
+ 
 
   const { handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
-  const addPost = Data => { console.log(Data) }
+  const addPost = Data => { setUser(Data) }
+
+  useEffect(() => {
+    if (user) {
+      login(user);
+      // history.push('/')
+    }
+  }, [user]);
 
   
 
@@ -83,10 +94,10 @@ function Login() {
                   id="senha"
                   label="Senha"
                   type="password"
-                  name="senha"
+                  name="password"
                   placeholder=""
                   validation={{ control }}
-                  error={errors.senha}
+                  error={errors.password}
                 />
               </div>
 
