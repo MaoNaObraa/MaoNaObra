@@ -29,16 +29,19 @@ const AnuncioPage = () => {
       const addPost = (data) => {
         const newFormData = {
             'categoria': data.categoria,
+            'ServicosOferecidos': data.ServicosOferecidos,
             'Instagram': data.Instagram,
             'descrevaSeuTrabalho': data.descrevaSeuTrabalho,
             'Whatsapp': data.Whatsapp,
             'Telefone': data.Telefone,
         }; if (Object.keys(errors).length === 0) {
-         history.push('/')
-        console.log(newFormData);
+            console.log(newFormData);
+            history.push('/recuperarSenha');
+        } else {
+            console.log('Existem erros no formulário.');
+        }
     };
- };
- 
+
 
     return (
         <div>
