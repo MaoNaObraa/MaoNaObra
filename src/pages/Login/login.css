@@ -22,6 +22,10 @@ main{
     padding: 10px;
 }
 
+.nomeMostrar{
+    cursor: pointer;
+}
+
 
 #form-login{
     flex: 1;

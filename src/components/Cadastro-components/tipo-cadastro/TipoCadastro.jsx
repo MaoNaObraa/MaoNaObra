@@ -52,7 +52,7 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
 
     return (
         <>
-            <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between'
+            <motion.div className='principal-box-cadastro box-tipo-cadastro d-flex flex-column justify-content-between'
             initial={{y: -200}}
             animate={{ y: 0}}
             exit={{y:-200}}>
