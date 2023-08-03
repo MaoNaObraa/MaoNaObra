@@ -9,8 +9,8 @@ import { motion } from 'framer-motion';
 
 const Cadastro = () => {
     
-   const[dadosSuasInformacoes, setDadosSuasInformacoes] = useState()
-   const[dadosDadosPessoais, setDadosPessoais] = useState()
+   const[suasInformacoesUser, setDadosSuasInformacoes] = useState()
+   const[dadosPessoaisUser, setDadosPessoais] = useState()
 
     function salvarInformacoes(dados){
         
@@ -21,8 +21,6 @@ const Cadastro = () => {
 
         setDadosPessoais(dadosPessoais)
     }
-    
-
   
 
     return (
@@ -38,7 +36,7 @@ const Cadastro = () => {
                     <DadosPessoais onSaveDadosPessoais={SalvarInformacoesDadosPessoais} />
                 </Route>
                 <Route path="/cadastro/tipoCadastro" exact>
-                    <TipoCadastro suasInformacoesDados={dadosSuasInformacoes} dadosPessoaisDados={dadosDadosPessoais}/>
+                    <TipoCadastro suasInformacoesDados={suasInformacoesUser} dadosPessoaisDados={dadosPessoaisUser}/>
                 </Route>
             </motion.div>
         </>
