@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import './suasInformacoes.css'
 
 const validationSchema = yup.object().shape({
-  nomeCompleto: yup.string().required('Campo obrigatório.'),
+  nomeCompleto: yup.string().matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, 'Digite apenas letras').required('Campo obrigatório.'),
   email: yup.string().email('Escreva um email válido').required('Campo obrigatório.'),
   celular: yup.string().matches(/^\d+$/, 'O número informado é inválido.').required('Campo obrigatório.'),
   senha: yup.string().min(8, 'A senha deve ter pelo menos 8 caracteres.').max(24, 'A senha deve conter 24 caracteres no máximo').required('Campo obrigatório'),
