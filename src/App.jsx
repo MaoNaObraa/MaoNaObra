@@ -7,6 +7,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import { AnimatePresence } from 'framer-motion';
 import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
 import AnuncioPage from './pages/anuncioPage/anuncioPage';
+import { UserProvider } from '../context/userContext';
 
 function App() {
 
@@ -14,42 +15,44 @@ function App() {
   return (
     <>
       <AnimatePresence mode='wait'>
-        <BrowserRouter>
+        <UserProvider>
+          <BrowserRouter>
 
-          <div>
-            <Route path="/cadastro">
-              <Cadastro />
-            </Route>
-
-            <Route path={["/", "/prestadorServicoAnuncio","/anuncioPage"]} exact>
-              <Navigation />
-            </Route>
-            
-            <Switch>
-
-              <Route path="/login" exact>
-                <Login />
+            <div>
+              <Route path="/cadastro">
+                <Cadastro />
               </Route>
 
-              <Route path="/prestadorServicoAnuncio" exact>
-                <PrestadorServicoAnuncio />
+              <Route path={["/", "/prestadorServicoAnuncio", "/anuncioPage"]} exact>
+                <Navigation />
               </Route>
 
-              <Route path="/recuperarSenha" exact>
-                <ForgotPassword />
-              </Route>
+              <Switch>
 
-              <Route path="/anuncioPage" exact>
-                <AnuncioPage />
-              </Route>
+                <Route path="/login" exact>
+                  <Login />
+                </Route>
 
-              <Route path="/" exact>
-                <Home />
-              </Route>
+                <Route path="/prestadorServicoAnuncio" exact>
+                  <PrestadorServicoAnuncio />
+                </Route>
 
-            </Switch>
-          </div>
-        </BrowserRouter>
+                <Route path="/recuperarSenha" exact>
+                  <ForgotPassword />
+                </Route>
+
+                <Route path="/anuncioPage" exact>
+                  <AnuncioPage />
+                </Route>
+
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </UserProvider>
       </AnimatePresence>
     </>
   )
