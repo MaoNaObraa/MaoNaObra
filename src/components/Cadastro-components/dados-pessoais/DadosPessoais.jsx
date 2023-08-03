@@ -26,11 +26,21 @@ const validationSchema = yup.object().shape({
 
 const DadosPessoais = ({onSaveDadosPessoais}) => {
 
-  const [formData, setFormData] = useState({});
-
-const { handleSubmit, control, formState: { errors } } = useForm({
-    resolver: yupResolver(validationSchema)
+  const [formData, setFormData] = useState(() => {
+    const storedData = localStorage.getItem('dadosPessoaisFormData');
+    return storedData ? JSON.parse(storedData) : {};
   });
+
+
+  
+  const { handleSubmit, control, formState: { errors } } = useForm({
+    resolver: yupResolver(validationSchema),
+    defaultValues: formData
+  });
+
+  useEffect(() => {
+    localStorage.setItem('dadosPessoaisFormData', JSON.stringify(formData));
+  }, [formData]);
 
   const addPost = (data) => {
     if (Object.keys(errors).length === 0) {
