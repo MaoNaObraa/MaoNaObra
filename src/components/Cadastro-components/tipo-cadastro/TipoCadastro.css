@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.box-tipo-cadastro{
+    overflow: hidden !important;
+}
+
 .tipo-cadastro-label{
     max-width: 700px;
     max-height: 300px;
