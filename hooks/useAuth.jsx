@@ -15,7 +15,7 @@ const useAuth = () => {
         }
     }, [])
 
-    async function login(user){
+    async function login(user, history){
         try {
             const data = await api.post('/users/login', user).then((response)=>{
                 return response.data
@@ -24,7 +24,7 @@ const useAuth = () => {
             await authUser(data)
             history.push('/')
         } catch (error) {
-            console.log(error.response)
+            throw new Error('Acesso negado. Verifique suas informações de login.');
         }
     }
 
