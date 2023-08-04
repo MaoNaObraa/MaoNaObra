@@ -13,7 +13,6 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
     const { register } = useContext(Context)
 
-
     function voltarParaDadosPessoais() {
         history.push('/cadastro/dadosPessoais');
     }
@@ -48,6 +47,8 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
                 } else if (tipoCadastro === 'cliente') {
                     register(user, '/', history)
                 }
+              localStorage.removeItem('suasInformacoesFormData'); // Remover dados de SuasInformacoes
+              localStorage.removeItem('dadosPessoaisFormData');
             } catch (error) {
                 console.log(error)
             }

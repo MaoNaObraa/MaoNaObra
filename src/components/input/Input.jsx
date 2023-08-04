@@ -1,6 +1,6 @@
+import './Input.css';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import './Input.css';
 
 const Input = ({ id, label, type, name, placeholder, validation, error }) => {
   return (
