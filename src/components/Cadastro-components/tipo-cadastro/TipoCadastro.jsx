@@ -19,7 +19,7 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
     }
 
 
-    function validacaoTipoCadastro() {
+    async function validacaoTipoCadastro() {
         if (!tipoCadastro) {
             setErroTipoCadastro('Por favor, selecione um tipo de cadastro antes de prosseguir.');
         } else {
@@ -42,15 +42,17 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
                 "city": dadosPessoaisDados.cidade,
                 "tipoCadastro": tipoCadastro,
             }
-            console.log(user)
-            register(user)
-            if (tipoCadastro === 'prestadorServico') {
-                // console.log(user);
-                //  history.push('/anuncioPage');
-            } else if (tipoCadastro === 'cliente') {
-                // console.log(user);
-                history.push('/');
+            try {
+                if (tipoCadastro === 'prestadorServico') {
+                    register(user, '/anuncio', history)
+                } else if (tipoCadastro === 'cliente') {
+                    register(user, '/', history)
+                }
+            } catch (error) {
+                console.log(error)
             }
+
+
         }
     }
 
