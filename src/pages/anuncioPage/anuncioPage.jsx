@@ -12,7 +12,7 @@ const validationSchema = yup.object().shape({
     categoria: string().required('Campo obrigatório'),
     // ServicosOferecidos: ,
     Instagram: string().required('O campo é obrigatório, digite seu instagram') ,
-    descrevaSeuTrabalho: string().min(207, 'O mínimo de caracteres é 207').max(933, 'O máxomo de caracteres é 933').required('O campo é obrigatório, descreva seu trabalho'),
+    descrevaSeuTrabalho: string().min(207, 'O mínimo de caracteres é 207').max(933, 'O máximo de caracteres é 933').required('O campo é obrigatório, descreva seu trabalho'),
     Whatsapp: yup.string().matches(/^[0-9]{10,11}$/, 'Número de WhatsApp inválido. Deve conter de 10 a 11 dígitos numéricos.'). required('O campo é obrigatório, digite um número válido'),
     Telefone: yup.string().matches(/^\d{10,11}$/, 'Número de telefone inválido. Deve conter de 10 a 11 dígitos numéricos.'). required('O campo é obrigatório, digite um número válido'),
 })
