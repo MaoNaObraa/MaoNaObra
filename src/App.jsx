@@ -7,6 +7,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import { AnimatePresence } from 'framer-motion';
 import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
 import AnuncioPage from './pages/anuncioPage/anuncioPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -47,7 +48,8 @@ function App() {
                 <Home />
               </Route>
 
-            </Switch>
+              </Switch>
+            <Footer/>
           </div>
         </BrowserRouter>
       </AnimatePresence>
