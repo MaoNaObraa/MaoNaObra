@@ -3,11 +3,10 @@ import './TipoCadastro.css';
 import prestadorServico from '/prestadorServico-icon.png';
 import cliente from '/cliente-icon.png';
 import { useHistory } from "react-router-dom";
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { UserProvider, Context } from '../../../../context/userContext';
 
-const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
-
+const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, prestadorServicoDados,imagemPerfil }) => {
     const history = useHistory();
     const [tipoCadastro, setTipoCadastro] = useState('');
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
@@ -23,29 +22,33 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
             setErroTipoCadastro('Por favor, selecione um tipo de cadastro antes de prosseguir.');
         } else {
             setErroTipoCadastro('');
-            const user = {
-                "name": suasInformacoesDados.nomeCompleto,
-                "email": suasInformacoesDados.email,
-                "cellphone": suasInformacoesDados.celular,
-                "password": suasInformacoesDados.senha,
-                "confirmPassword": suasInformacoesDados.senhaConfirm,
-                "CPF": dadosPessoaisDados.cpf,
-                "RG": dadosPessoaisDados.rg,
-                "birthDate": dadosPessoaisDados.dataNascimento,
-                "completeAdress": dadosPessoaisDados.endereco,
-                "CEP": dadosPessoaisDados.cep,
-                "number": dadosPessoaisDados.numero,
-                "neighborhood": dadosPessoaisDados.bairro,
-                "locationState": dadosPessoaisDados.estado,
-                "complement": dadosPessoaisDados.complemento,
-                "city": dadosPessoaisDados.cidade,
-                "tipoCadastro": tipoCadastro,
+            const userData = new FormData()
+            for (const [key, value] of imagemPerfil.entries()) {
+                userData.append(key, value);
             }
+            userData.append( "name", suasInformacoesDados.nomeCompleto);
+            userData.append("email", suasInformacoesDados.email );
+            userData.append("cellphone", suasInformacoesDados.celular );
+            userData.append( "password", suasInformacoesDados.senha);
+            userData.append( "confirmPassword", suasInformacoesDados.senhaConfirm);
+            userData.append( "CPF", dadosPessoaisDados.cpf);
+            userData.append("RG", dadosPessoaisDados.rg );
+            userData.append("birthDate", dadosPessoaisDados.dataNascimento );
+            userData.append("completeAdress", dadosPessoaisDados.endereco );
+            userData.append("CEP", dadosPessoaisDados.cep);
+            userData.append( "number", dadosPessoaisDados.numero);
+            userData.append("neighborhood", dadosPessoaisDados.bairro);
+            userData.append("locationState", dadosPessoaisDados.estado);
+            userData.append("complement", dadosPessoaisDados.complemento);
+            userData.append("city", dadosPessoaisDados.cidade);
+            userData.append("tipoCadastro", tipoCadastro);
+
             try {
                 if (tipoCadastro === 'prestadorServico') {
-                    register(user, '/anuncioPage', history)
+                    history.push('/cadastro/anuncioPage')
+                    prestadorServicoDados(user)
                 } else if (tipoCadastro === 'cliente') {
-                    register(user, '/', history)
+                    register(userData, '/', history)
                 }
               localStorage.removeItem('suasInformacoesFormData'); // Remover dados de SuasInformacoes
               localStorage.removeItem('dadosPessoaisFormData');

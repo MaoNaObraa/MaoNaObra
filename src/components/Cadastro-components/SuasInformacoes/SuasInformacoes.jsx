@@ -15,10 +15,11 @@ const validationSchema = yup.object().shape({
   senhaConfirm: yup.string().oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais.').required('Campo obrigatório')
 });
 
-const SuasInformacoes = ({ onSave }) => {
+const SuasInformacoes = ({ onSave, onSaveImage }) => {
 
   
   const [formData, setFormData] = useState({});
+  const [imageProfile, setImageProfile] = useState()
 
   const { handleSubmit, control, formState: { errors }, setValue } = useForm({
     resolver: yupResolver(validationSchema),
@@ -42,6 +43,9 @@ const SuasInformacoes = ({ onSave }) => {
 
   const addPost = (data) => {
     if (Object.keys(errors).length === 0) {
+      const formData = new FormData()
+      formData.append('image', imageProfile)
+      onSaveImage(formData)
       onSave(data); 
       localStorage.setItem('dadosPessoaisFormData', JSON.stringify(data));
       history.push('/cadastro/dadosPessoais');
@@ -66,7 +70,7 @@ const SuasInformacoes = ({ onSave }) => {
         <div className='d-flex align-items-center'>
           <div>
             <label htmlFor='image-perfil' id='placeholder-perfil'></label>
-            <input type='file' name='image-perfil' id='image-perfil' />
+            <input type='file' name='image-perfil' id='image-perfil' onChange={e => setImageProfile(e.target.files[0])}/>
           </div>
           <div id='text-placeholder-perfil'>
             <h6 className='text-principal'>Clique para inserir uma foto para seu perfil</h6>
