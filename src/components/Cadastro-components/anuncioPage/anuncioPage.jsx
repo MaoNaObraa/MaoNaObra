@@ -30,19 +30,20 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
     });
 
     function handleAnuncio(data) {
-        console.log(picturesAdvert)
-        // const userData = new FormData()
-        // for (const [key, value] of prestadorServicoDados.entries()) {
-        //     userData.append(key, value);
-        // }
+        
+        const userData = new FormData()
+        for (const [key, value] of prestadorServicoDados.entries()) {
+            userData.append(key, value);
+        }
 
-        // userData.append("descriptionAd", data.description)
-        // userData.append("servicesAd", data.ServicosOferecidos)
-        // userData.append("category", data.categorias.value)
-        // userData.append("whatsappContact", data.Whatsapp)
-        // userData.append("instagramContact", data.Instagram)
-        // userData.append("telephoneContact", data.Telefone)
-        // register(userData, history)
+        userData.append("descriptionAd", data.description)
+        userData.append("servicesAd", data.ServicosOferecidos)
+        userData.append("category", data.categorias.value)
+        userData.append("whatsappContact", data.Whatsapp)
+        userData.append("instagramContact", data.Instagram)
+        userData.append("telephoneContact", data.Telefone)
+        userData.append("picturesAd", picturesAdvert)
+        register(userData, history)
     }
 
     return (
@@ -104,7 +105,7 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                         </div>
                         <div>
                             <label htmlFor="picturesAd"></label>
-                            <input type="file" name="picturesAd" id="picturesAd" multiple={true} onChange={e => setPicturesAdvert(e.target.files)}/> 
+                            <input type="file" name="picturesAd" id="picturesAd" multiple={true} onChange={e => setPicturesAdvert(Array.from(e.target.files))}/> 
                         </div>
                     </div>
 
