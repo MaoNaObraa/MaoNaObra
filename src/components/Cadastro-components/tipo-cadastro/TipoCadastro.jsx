@@ -43,7 +43,7 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados }) => {
             }
             try {
                 if (tipoCadastro === 'prestadorServico') {
-                    register(user, '/anuncio', history)
+                    register(user, '/anuncioPage', history)
                 } else if (tipoCadastro === 'cliente') {
                     register(user, '/', history)
                 }
