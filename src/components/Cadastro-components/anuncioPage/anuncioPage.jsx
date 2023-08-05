@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
 import { UserProvider, Context } from '../../../../context/userContext';
 
@@ -23,49 +23,26 @@ const validationSchema = yup.object().shape({
 const AnuncioPage = ({ prestadorServicoDados }) => {
     const history = useHistory()
     const { register } = useContext(Context)
+    const [picturesAdvert, setPicturesAdvert] = useState([]);
 
     const { handleSubmit, control, formState: { errors }, setValue } = useForm({
         resolver: yupResolver(validationSchema),
     });
 
     function handleAnuncio(data) {
-        const userData = new FormData()
-        for (const [key, value] of prestadorServicoDados.entries()) {
-            userData.append(key, value);
-        }
-
-        userData.append("descriptionAd", data.description)
-        userData.append("servicesAd", data.ServicosOferecidos)
-        userData.append("category", data.categorias.value)
-        userData.append("whatsappContact", data.Whatsapp)
-        userData.append("instagramContact", data.Instagram)
-        userData.append("telephoneContact", data.Telefone)
-
-        // const user = {
-        //     "name": prestadorServicoDados.name,
-        //     "email": prestadorServicoDados.email,
-        //     "cellphone": prestadorServicoDados.cellphone,
-        //     "password": prestadorServicoDados.password,
-        //     "confirmPassword": prestadorServicoDados.confirmPassword,
-        //     "CPF": prestadorServicoDados.CPF,
-        //     "RG": prestadorServicoDados.RG,
-        //     "birthDate": prestadorServicoDados.birthDate,
-        //     "completeAdress": prestadorServicoDados.completeAdress,
-        //     "CEP": prestadorServicoDados.CEP,
-        //     "number": prestadorServicoDados.number,
-        //     "neighborhood": prestadorServicoDados.neighborhood,
-        //     "locationState": prestadorServicoDados.locationState,
-        //     "complement": prestadorServicoDados.complement,
-        //     "city": prestadorServicoDados.city,
-        //     "tipoCadastro": prestadorServicoDados.tipoCadastro,
-        //     "descriptionAd": data.description,
-        //     "servicesAd": data.ServicosOferecidos,
-        //     "category": data.categorias.value,
-        //     "whatsappContact": data.Whatsapp,
-        //     "instagramContact": data.Instagram,
-        //     "telephoneContact": data.Telefone
+        console.log(picturesAdvert)
+        // const userData = new FormData()
+        // for (const [key, value] of prestadorServicoDados.entries()) {
+        //     userData.append(key, value);
         // }
-        register(userData, history)
+
+        // userData.append("descriptionAd", data.description)
+        // userData.append("servicesAd", data.ServicosOferecidos)
+        // userData.append("category", data.categorias.value)
+        // userData.append("whatsappContact", data.Whatsapp)
+        // userData.append("instagramContact", data.Instagram)
+        // userData.append("telephoneContact", data.Telefone)
+        // register(userData, history)
     }
 
     return (
@@ -120,6 +97,17 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                         </div>
                         <Input id="caixa3" label="Quais serviços você oferece?(Separe cada serviço por virgula)" name='ServicosOferecidos' type="text" placeholder="Ex: Pedreiro, Eletricista, Ecanador" validation={{ control }} error={errors.ServicosOferecidos} />
                     </div>
+
+                    <div className='my-4'>
+                        <div id="titulo2">
+                            <h2 id='text2'>Seus serviços</h2>
+                        </div>
+                        <div>
+                            <label htmlFor="picturesAd"></label>
+                            <input type="file" name="picturesAd" id="picturesAd" multiple={true} onChange={e => setPicturesAdvert(e.target.files)}/> 
+                        </div>
+                    </div>
+
                     <div className=' p-1 flex-column mt-4'>
                         <div id="titulo2">
                             <h2 id='text2'>Contato</h2>
