@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useState, useContext, useEffect } from 'react';
 import { UserProvider, Context } from '../../../../context/userContext';
 
-const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, prestadorServicoDados,imagemPerfil }) => {
+const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, userDataEnv ,prestadorServicoDados,imagemPerfil }) => {
     const history = useHistory();
     const [tipoCadastro, setTipoCadastro] = useState('');
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
@@ -46,12 +46,11 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, prestadorServi
             try {
                 if (tipoCadastro === 'prestadorServico') {
                     history.push('/cadastro/anuncioPage')
-                    prestadorServicoDados(user)
+                    prestadorServicoDados(tipoCadastro)
+                    userDataEnv(userData)
                 } else if (tipoCadastro === 'cliente') {
-                    register(userData, '/', history)
+                    register(userData, history)
                 }
-              localStorage.removeItem('suasInformacoesFormData'); // Remover dados de SuasInformacoes
-              localStorage.removeItem('dadosPessoaisFormData');
             } catch (error) {
                 console.log(error)
             }

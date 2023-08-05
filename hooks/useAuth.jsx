@@ -28,7 +28,7 @@ const useAuth = () => {
         }
     }
 
-    async function register(user,routeAfterSuccess, history){
+    async function register(user, history){
 
         try {
             const data = await api.post('/users/register', user, {
@@ -38,7 +38,7 @@ const useAuth = () => {
             })
 
             await authUser(data)
-            history.push(routeAfterSuccess);
+            history.push('/');
         } catch (error) {
             history.push('/cadastro/suasInformacoes')
             // throw new Error('Email já cadastrado. Escolha um email novo ou faça login')

@@ -14,7 +14,8 @@ const Cadastro = () => {
    const[dadosPessoaisUser, setDadosPessoais] = useState()
    const[dadosUser, setDadosUser] = useState()
    const[isPrestadorServicoCadastro, setIsPrestadorServicoCadastro] = useState(false)
-    const[imageForm, setImageForm] = useState(new FormData())
+   const[imageForm, setImageForm] = useState(new FormData())
+   const[prestadorServicoType, setPrestadorServicoType] = useState()
 
     function salvarInformacoes(dados){
         setSuasInformacoesUser(dados)
@@ -32,11 +33,16 @@ const Cadastro = () => {
         setDadosUser(userData)
     }
 
+    function salvarPrestadorServicoType(prestadorServicoTipo){
+        setPrestadorServicoType(prestadorServicoTipo)
+    }
+    
+
     useEffect(()=>{
-        if(dadosUser){
-            if(dadosUser.tipoCadastro == "prestadorServico"){
+        if(prestadorServicoType){
+            if(prestadorServicoType == "prestadorServico"){
                 setIsPrestadorServicoCadastro(true)          
-            }else if(dadosUser.tipoCadastro == "cliente"){
+            }else if(prestadorServicoType == "cliente"){
                 setIsPrestadorServicoCadastro(false)
             }
         }
@@ -54,7 +60,7 @@ const Cadastro = () => {
                     <DadosPessoais onSaveDadosPessoais={SalvarInformacoesDadosPessoais} />
                 </Route>
                 <Route path="/cadastro/tipoCadastro" exact>
-                    <TipoCadastro suasInformacoesDados={suasInformacoesUser} dadosPessoaisDados={dadosPessoaisUser} prestadorServicoDados={salvarDadosUser} imagemPerfil={imageForm}/>
+                    <TipoCadastro suasInformacoesDados={suasInformacoesUser} dadosPessoaisDados={dadosPessoaisUser} userDataEnv={salvarDadosUser} prestadorServicoDados={salvarPrestadorServicoType} imagemPerfil={imageForm}/>
                 </Route>
                 <Route path="/cadastro/anuncioPage" exact>
                     <AnuncioPage prestadorServicoDados={dadosUser}/>
