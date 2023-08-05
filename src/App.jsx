@@ -6,7 +6,6 @@ import Login from './pages/Login/login';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import { AnimatePresence } from 'framer-motion';
 import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
-import AnuncioPage from './pages/anuncioPage/anuncioPage';
 import { UserProvider } from '../context/userContext';
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
                 <Cadastro />
               </Route>
 
-              <Route path={["/", "/prestadorServicoAnuncio", "/anuncioPage"]} exact>
+              <Route path={["/", "/prestadorServicoAnuncio"]} exact>
                 <Navigation />
               </Route>
 
@@ -39,10 +38,6 @@ function App() {
 
                 <Route path="/recuperarSenha" exact>
                   <ForgotPassword />
-                </Route>
-
-                <Route path="/anuncioPage" exact>
-                  <AnuncioPage />
                 </Route>
 
                 <Route path="/" exact>
