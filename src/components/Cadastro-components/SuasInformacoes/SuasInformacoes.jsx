@@ -15,10 +15,11 @@ const validationSchema = yup.object().shape({
   senhaConfirm: yup.string().oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais.').required('Campo obrigatório')
 });
 
-const SuasInformacoes = ({ onSave }) => {
+const SuasInformacoes = ({ onSave, onSaveImage }) => {
 
-  
+  const [endImg] = useState('/placeholder-perfil.png')
   const [formData, setFormData] = useState({});
+  const [imageProfile, setImageProfile] = useState()
 
   const { handleSubmit, control, formState: { errors }, setValue } = useForm({
     resolver: yupResolver(validationSchema),
@@ -42,6 +43,9 @@ const SuasInformacoes = ({ onSave }) => {
 
   const addPost = (data) => {
     if (Object.keys(errors).length === 0) {
+      const formData = new FormData()
+      formData.append('image', imageProfile)
+      onSaveImage(formData)
       onSave(data); 
       localStorage.setItem('dadosPessoaisFormData', JSON.stringify(data));
       history.push('/cadastro/dadosPessoais');
@@ -65,14 +69,18 @@ const SuasInformacoes = ({ onSave }) => {
         </div>
         <div className='d-flex align-items-center'>
           <div>
-            <label htmlFor='image-perfil' id='placeholder-perfil'></label>
-            <input type='file' name='image-perfil' id='image-perfil' />
+            {
+              imageProfile ? <label htmlFor='image-perfil' id='placeholder-perfil' style={{backgroundImage: `url('${URL.createObjectURL(imageProfile)}')`}}></label>
+               :  <label htmlFor='image-perfil' id='placeholder-perfil' style={{backgroundImage: `url('${endImg}')`}}></label>
+            }
+            
+            <input type='file' name='imagePro' id='image-perfil' onChange={e => setImageProfile(e.target.files[0])}/>
           </div>
           <div id='text-placeholder-perfil'>
             <h6 className='text-principal'>Clique para inserir uma foto para seu perfil</h6>
             <p>Seu rosto precisa estar nítido na foto.</p>
             <p>Tire a foto em um local iluminado.</p>
-            <p>Limite máximo de 3mb.</p>
+            <p>Envie um arquivo PNG ou JPG.</p>
           </div>
         </div>
 

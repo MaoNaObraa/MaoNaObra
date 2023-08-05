@@ -28,18 +28,21 @@ const useAuth = () => {
         }
     }
 
-    async function register(user,routeAfterSuccess, history){
+    async function register(user, history){
 
         try {
-            const data = await api.post('/users/register', user).then((response)=>{
+            const data = await api.post('/users/register', user, {
+                headers: {'Content-Type': 'multipart/form-data'}
+            }).then((response)=>{
                 return response.data
             })
 
             await authUser(data)
-            history.push(routeAfterSuccess);
+            history.push('/');
         } catch (error) {
             history.push('/cadastro/suasInformacoes')
-            throw new Error('Email já cadastrado. Escolha um email novo ou faça login')
+            // throw new Error('Email já cadastrado. Escolha um email novo ou faça login')
+            console.log(error)
         }
     }
 

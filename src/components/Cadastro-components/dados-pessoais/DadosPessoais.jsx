@@ -42,6 +42,17 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
 
   const addPost = (data) => {
     if (Object.keys(errors).length === 0) {
+      // const formData = new FormData()
+      // formData.append('CPF', data.cpf)
+      // formData.append('RG', data.rg)
+      // formData.append('bithDate', data.dataNascimento)
+      // formData.append('completeAdress', data.endereco)
+      // formData.append('number', data.numero)
+      // formData.append('CEP', data.cep)
+      // formData.append('locationState', data.estado)
+      // formData.append('neighborhood', data.bairro)
+      // formData.append('city', data.cidade)
+      // formData.append('complement', data.complemento)
       onSaveDadosPessoais(data);
       localStorage.setItem('dadosPessoaisFormData', JSON.stringify(data)); // Salvar dados no localStorage
       enviarSuasInformacoes();
@@ -62,7 +73,10 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
   
   return (
     <>
-      <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'>
+      <motion.div className='principal-box-cadastro d-flex flex-column justify-content-between dadosPessoais'
+              initial={{ y: -200 }}
+              animate={{ y: 0 }}
+              exit={{ y: -200 }}>
       
         <form onSubmit={handleSubmit(addPost)} id='form-dadosPessoais'>
           <div className='w-100'> 
