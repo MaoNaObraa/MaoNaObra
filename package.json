@@ -23,6 +23,7 @@
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.3.4",
     "react-select": "^5.7.4",
+    "swiper": "^10.1.0",
     "yup": "^1.2.0",
     "yup-locale-pt": "^0.0.9"
   },
