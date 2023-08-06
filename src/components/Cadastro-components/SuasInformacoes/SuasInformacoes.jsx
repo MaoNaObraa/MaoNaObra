@@ -105,6 +105,7 @@ const SuasInformacoes = ({ onSave, onSaveImage }) => {
               error={errors.email}
             />
             <Input
+            mask='(99) 99999-9999'
               id='celular'
               label='Celular:'
               type='text'

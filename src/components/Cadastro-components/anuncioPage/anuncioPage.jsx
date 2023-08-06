@@ -115,8 +115,8 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                         </div>
                         <div>
                             <Input id="Instagram" label="Instagram" type="text" name="Instagram" placeholder="Digite seu Instagram" validation={{ control }} error={errors.Instagram} />
-                            <Input id="Whatsapp" label="Whatsapp" type="text" name="Whatsapp" placeholder="Digite seu Whatsapp" validation={{ control }} error={errors.Whatsapp} />
-                            <Input id="Telefone" label="Telefone" type="text" name="Telefone" placeholder="Digite seu Telefone" validation={{ control }} error={errors.Telefone} />
+                            <Input mask='(99) 99999-9999' id="Whatsapp" label="Whatsapp" type="text" name="Whatsapp" placeholder="Digite seu Whatsapp" validation={{ control }} error={errors.Whatsapp} />
+                            <Input  mask='(99) 99999-9999' id="Telefone" label="Telefone" type="text" name="Telefone" placeholder="Digite seu Telefone" validation={{ control }} error={errors.Telefone} />
                         </div>
                         <div className='my-3'>
                             <button id='button-suasInfos' type='submit' className='w-100 rounded text-light'>Cadastrar</button>
