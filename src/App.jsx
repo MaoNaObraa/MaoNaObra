@@ -22,7 +22,7 @@ function App() {
                 <Cadastro />
               </Route>
 
-              <Route path={["/", "/prestadorServicoAnuncio"]} exact>
+              <Route path={["/", "/users/:id"]} exact>
                 <Navigation />
               </Route>
 
@@ -32,7 +32,7 @@ function App() {
                   <Login />
                 </Route>
 
-                <Route path="/prestadorServicoAnuncio" exact>
+                <Route path="/users/:id" exact>
                   <PrestadorServicoAnuncio />
                 </Route>
 

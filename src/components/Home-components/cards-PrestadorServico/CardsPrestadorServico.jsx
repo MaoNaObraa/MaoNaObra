@@ -27,13 +27,13 @@ const CardsPrestadorServico = () => {
                                 nome={prestador.name}
                                 descricao={prestador.descriptionAd}
                                 servicos={prestador.servicesAd}
-                                avaliacao={5.0}
-                                rota={`users/${prestador.id}`}
+                                avaliacao={"5.0"}
+                                rota={`/users/${prestador.id}`}
                             />
                         ))
                         :
-                        <div>
-                            <h1>Não há nenhum prestador de serviço </h1>
+                        <div className='text-center'>
+                            <h5 style={{color:"rgb(77, 77, 77)"}}>Nenhum prestador de serviço cadastrado</h5>
                         </div>
                 }
             </div>
