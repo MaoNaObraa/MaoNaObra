@@ -7,9 +7,10 @@ import * as yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { UserProvider, Context } from '../../../../context/userContext';
+import Gallery from '../../Gallery/Gallery';
 
 const validationSchema = yup.object().shape({
     ServicosOferecidos: string().required('O campo é obrigatório'),
@@ -24,17 +25,27 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
     const history = useHistory()
     const { register } = useContext(Context)
     const [picturesAdvert, setPicturesAdvert] = useState([]);
+    const [qtdFotos, setQtdFotos] = useState(0)
+    const [imageUrls, setImageUrls] = useState([]);
 
     const { handleSubmit, control, formState: { errors }, setValue } = useForm({
         resolver: yupResolver(validationSchema),
     });
 
-    function handleAnuncio(data) {
-        
+    useEffect(() => {
+        setQtdFotos(picturesAdvert.length)
+        const urls = picturesAdvert.map((file) => URL.createObjectURL(file));
+        setImageUrls(urls);
+        console.log(imageUrls)
+    }, [picturesAdvert])
+
+    async function handleAnuncio(data) {
+
         const userData = new FormData()
         for (const [key, value] of prestadorServicoDados.entries()) {
             userData.append(key, value);
         }
+
 
         userData.append("descriptionAd", data.description)
         userData.append("servicesAd", data.ServicosOferecidos)
@@ -42,8 +53,12 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
         userData.append("whatsappContact", data.Whatsapp)
         userData.append("instagramContact", data.Instagram)
         userData.append("telephoneContact", data.Telefone)
-        userData.append("picturesAd", picturesAdvert)
-        register(userData, history)
+        picturesAdvert.forEach(picture => {
+            userData.append("picturesAd", picture)
+        });
+        
+
+        await register(userData, history)
     }
 
     return (
@@ -103,9 +118,25 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                         <div id="titulo2">
                             <h2 id='text2'>Seus serviços</h2>
                         </div>
-                        <div>
-                            <label htmlFor="picturesAd"></label>
-                            <input type="file" name="picturesAd" id="picturesAd" multiple={true} onChange={e => setPicturesAdvert(Array.from(e.target.files))}/> 
+                        <div className='d-flex rounded'>
+                            <div>
+                                <label htmlFor="picturesAd" id='label-picturesAd' className='d-flex align-items-center justify-content-center'>
+                                    <div className='d-flex flex-column align-items-center'>
+                                        <img src="/picture-icon.svg" alt="" width={30} />
+                                        <span>Fotos do seu serviços</span>
+                                        <span>{qtdFotos}/5</span>
+                                    </div>
+                                </label>
+                                <input type="file" name="picturesAd" className='d-none' id="picturesAd" multiple={true} onChange={e => setPicturesAdvert(Array.from(e.target.files))} />
+                            </div>
+                            <div className='d-flex align-items-center p-3' style={{    width: '540px',height: '300px'}}>
+                            {
+                                imageUrls ?
+                                <Gallery images={imageUrls}/>
+                                : 
+                                ''
+                            }
+                            </div>
                         </div>
                     </div>
 
