@@ -9,9 +9,31 @@ const PrestadorServicoAnuncio = () => {
     const [prestadorServico, setPrestadorServico] = useState({})
     const [picturesURL, setPicturesURL] = useState([])
     const [servicos, setServicos] = useState([])
-    const [comments, setComments ] =useState(0) 
     const { id } = useParams()
     const [token] = useState(localStorage.getItem('token') || '')
+
+    let staticComments = [
+        {
+            "Nome": "Emanuel Alves",
+            "Comentario": "Demorou um pouco, mas o serviço ficou ótimo!",
+            "Avaliacao": "4.5"
+        },
+        {
+            "Nome": "Camilla Fernanda",
+            "Comentario": "Ótimo trabalho, irei chamar mais vezes!!",
+            "Avaliacao": "5.0"
+        },
+        {
+            "Nome": "Joseferson Silva",
+            "Comentario": "Não gostei muito do serviço, mas é uma ótima pessoa",
+            "Avaliacao": "3.0"
+        },
+        {
+            "Nome": "Juliano Casablanca",
+            "Comentario": "Fez um ótimo trabalho",
+            "Avaliacao": "5.0"
+        }
+    ]
 
     useEffect(() => {
         api.get(`/users/${id}`).then((response) => {
@@ -64,13 +86,20 @@ const PrestadorServicoAnuncio = () => {
                         </div>
                     </div>
                 </div>
-                <div id='contract-button'>
+                <div id='contract-button' className='mt-3'>
                     <button>Contratar</button>
                 </div>
                 <div id='comments-section' className='mt-4'>
-                    <h5 className='text-principal'>Comentarios ({comments})</h5>
+                    <h5 className='text-principal mb-3'>Comentarios (4)</h5>
                     <div>
-                        <Comment Nome="jerson" Avaliacao="4.0" Comentario="otimo serviço" />
+                        {staticComments.map((comentario, index) => (
+                            <Comment
+                                key={index}
+                                Nome={comentario.Nome}
+                                Avaliacao={comentario.Avaliacao}
+                                Comentario={comentario.Comentario}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
