@@ -15,9 +15,7 @@ import Gallery from '../../Gallery/Gallery';
 const validationSchema = yup.object().shape({
     ServicosOferecidos: string().required('O campo é obrigatório'),
     Instagram: yup.string().required('O campo é obrigatório, digite seu instagram'),
-    categorias: yup.string()
-    .matches(/^\d{11}$/, 'O número informado é inválido, deve ter 11 dígitos incluindo o ddd.')
-    .required('Campo obrigatório.'),
+    categorias: yup.object({ value: yup.string().required("Campo obrigatorio") }),
     Whatsapp: yup.string()
     .matches(/^\d{11}$/, 'O número informado é inválido, deve ter 11 dígitos incluindo o ddd.')
     .required('Campo obrigatório.'),
@@ -49,7 +47,7 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
         for (const [key, value] of prestadorServicoDados.entries()) {
             userData.append(key, value);
         }
-
+        console.log(data)
 
         userData.append("descriptionAd", data.description)
         userData.append("servicesAd", data.ServicosOferecidos)
