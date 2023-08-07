@@ -1,5 +1,6 @@
 import NavegationCadastro from '../../components/Cadastro-components/navegation-cadastro/NavegationCadastro';
 import { useRouteMatch, Route } from "react-router-dom";
+import './Cadastro.css'
 import SuasInformacoes from '../../components/Cadastro-components/SuasInformacoes/SuasInformacoes';
 import DadosPessoais from '../../components/Cadastro-components/dados-pessoais/DadosPessoais';
 import TipoCadastro from '../../components/Cadastro-components/tipo-cadastro/TipoCadastro';
@@ -47,6 +48,14 @@ const Cadastro = () => {
             }
         }
     }, [dadosUser])
+    useEffect(() => {
+        // Aplicar a classe "no-scroll" quando o componente montar
+        document.body.classList.add('no-scroll');
+        return () => {
+            // Remover a classe "no-scroll" quando o componente desmontar
+            document.body.classList.remove('no-scroll');
+        };
+    }, []);
     return (
         <>
             <motion.div className='d-flex' style={{ overflowY: "hidden" }}

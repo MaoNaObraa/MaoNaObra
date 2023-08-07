@@ -8,6 +8,7 @@ import { AnimatePresence } from 'framer-motion';
 import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
 import { UserProvider } from '../context/userContext';
 import Profile from './pages/Profile/Profile';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 
               <Route path={["/", "/users/:id", "/profile"]} exact>
                 <Navigation />
+                
               </Route>
 
               <Switch>
@@ -49,6 +51,12 @@ function App() {
                 </Route>
 
               </Switch>
+              <Route
+                path={["/", "/users/:id", "/profile", "/recuperarSenha"]}
+                exact
+              >
+                <Footer />
+              </Route>
             </div>
           </BrowserRouter>
         </UserProvider>

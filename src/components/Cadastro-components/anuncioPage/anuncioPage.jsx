@@ -38,7 +38,6 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
         setQtdFotos(picturesAdvert.length)
         const urls = picturesAdvert.map((file) => URL.createObjectURL(file));
         setImageUrls(urls);
-        console.log(imageUrls)
     }, [picturesAdvert])
 
     async function handleAnuncio(data) {
@@ -134,9 +133,9 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                             <div className='d-flex align-items-center p-3' style={{    width: '540px',height: '300px'}}>
                             {
                                 imageUrls ?
-                                <Gallery images={imageUrls}/>
+                                <Gallery images={imageUrls} />
                                 : 
-                                ''
+                                <div>nada aqui</div>
                             }
                             </div>
                         </div>
