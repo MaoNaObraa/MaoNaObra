@@ -10,7 +10,6 @@ const CardsPrestadorServico = () => {
     useEffect(() => {
         api.get('/users/').then((response) => {
             setPrestadoresServicos(response.data.users)
-            console.log(prestadoresServico)
         })
     }, [])
 
