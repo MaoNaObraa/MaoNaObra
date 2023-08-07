@@ -5,46 +5,65 @@ import FilterSearch from '../../components/categories-filter/filter/FilterSearch
 import './Home.css'
 import SearchResults from '../../components/Home-components/searchResults/searchResults';
 import { motion } from 'framer-motion';
+import api from '../../../utils/api';
+import PrestadorServico from '../../components/prestadorServico/PrestadorServico';
+import ShowResultsToHome from '../../components/showResultsToHome/ShowResultsToHome';
 
 const Home = () => {
-    // recuperando os dados da barra de pesquisa
     const [pesquisaValue, setPesquisaValue] = useState('')
-    //mostrar resultado da pesquisa
     const [mostrarResultados, setMostrarResultados] = useState(false)
+    const [usersFound, setUsersFound] = useState([])
 
-    // função para retornar o que foi pesquisado
-    const pesquisar = () => {
+    const updateUsersFound = (users) => {
+        setUsersFound(users);
         setMostrarResultados(true)
+    };
+
+    const pesquisar = (event) => {
+        setMostrarResultados(true)
+        event.preventDefault()
+        api.get(`/users/search/${pesquisaValue}`).then((response) => {
+            setUsersFound(response.data.users)
+        })
     }
 
     // caso a barra de pesquisa esteja vazia, voltar para componente de cards
-    useEffect(()=>{
-        if(pesquisaValue == ""){
+    useEffect(() => {
+        if (pesquisaValue == "") {
             setMostrarResultados(false)
         }
     }, [pesquisaValue])
 
     return (
         <motion.div className='container d-flex justify-content-between' id='home-box'
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
         >
             <div id='categories-box'>
-                <FilterSearch />
+                <FilterSearch cityUsers={updateUsersFound} />
                 <Categories />
             </div>
 
             <div id='principal-box-home' className='pb-3'>
-                <div className='d-flex' id='pesquisar-box'>
-                    <input type="text" placeholder='Pesquise um serviço de seu interesse' id='pesquisar-input' value={pesquisaValue} onChange={(e) => { setPesquisaValue(e.target.value) }} />
-                    <button id='pesquisar-button' onClick={pesquisar}>Pesquisar</button>
-                </div>
+                <form action="">
+                    <div className='d-flex' id='pesquisar-box'>
+                        <input type="text" name='search' placeholder='Pesquise um serviço de seu interesse' id='pesquisar-input' value={pesquisaValue} onChange={(e) => { setPesquisaValue(e.target.value) }} />
+                        <button id='pesquisar-button' type='submit' onClick={() => { pesquisar(event) }}>Pesquisar</button>
+                    </div>
+                </form>
                 <div className='mt-4 mb-4' id="persons">
                     <div>
-                        {/* se o estado mostrarResultado for falso, então mostra os cards normalmente, se for verdadeiro retornar o componente de resultado de pesquisa */}
-                        {mostrarResultados && <SearchResults textoPesquisa={pesquisaValue}/>}
-                        {!mostrarResultados && <CardsPrestadorServico />}
+
+                        {
+                            mostrarResultados ?
+                                <div>
+                                    <h4>Resultado da busca: {pesquisaValue}</h4>
+                                    <ShowResultsToHome usersFound={usersFound} />
+                                </div>
+                                :
+                                <CardsPrestadorServico />
+                        }   
                     </div>
                 </div>
             </div>

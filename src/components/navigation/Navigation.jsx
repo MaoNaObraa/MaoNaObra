@@ -22,7 +22,7 @@ const Navigation = () => {
                         authenticated ? 
                         ( 
                         <div>
-                            <p>logado</p>
+                            <Link to="/profile"> <p>logado</p></Link>
                             <li onClick={logout}>Sair</li>
                         </div>
                         ) 
