@@ -1,17 +1,22 @@
 #foto-comentario{
     width: 80px;
     height: 80px;
-    background: red;
     border-radius: 50%;
-    background-image: url("../../../public/fotocomentario.png");
+    background-image: url("/placeholder-perfil.png");
     background-size: cover;
-    margin-right: 20px;
+    margin: 0 20px;
 }
 
 #comentario{
     width: 700px;
-    height: 150px;
-    padding: 20px;
+    height: 130px;
+    margin-bottom: 30px;
     background: white;
     border-radius: 10px;
+    box-shadow:3px 3px 5px rgba(107, 107, 107, 0.267);
+}
+
+#comentario p, #comentario h6,#comentario h5{
+    margin: 0 !important;
+    padding: 0 !important;
 }
