@@ -1,0 +1,34 @@
+body {
+    margin:0;
+    padding:0;
+   
+}
+
+.footer {
+    background-color: #0c6a96;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    left: 0;
+    width: 100%;
+}
+.coment {
+    margin-right: 10px;
+    font-size: 15px;
+    color: white;
+}
+
+.comentario-rodape{
+    background-color: #0c6a96;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+        
+}
+
+.footer,
+.comentario-rodape{
+    margin-bottom: 2px;
+}
+
