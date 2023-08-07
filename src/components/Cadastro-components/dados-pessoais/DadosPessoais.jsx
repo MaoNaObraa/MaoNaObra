@@ -29,7 +29,7 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
     return storedData ? JSON.parse(storedData) : {};
   });
 
-  const { handleSubmit, control, formState: { errors } } = useForm({
+  const { handleSubmit, control, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: formData
   });
@@ -42,17 +42,6 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
 
   const addPost = (data) => {
     if (Object.keys(errors).length === 0) {
-      // const formData = new FormData()
-      // formData.append('CPF', data.cpf)
-      // formData.append('RG', data.rg)
-      // formData.append('bithDate', data.dataNascimento)
-      // formData.append('completeAdress', data.endereco)
-      // formData.append('number', data.numero)
-      // formData.append('CEP', data.cep)
-      // formData.append('locationState', data.estado)
-      // formData.append('neighborhood', data.bairro)
-      // formData.append('city', data.cidade)
-      // formData.append('complement', data.complemento)
       onSaveDadosPessoais(data);
       localStorage.setItem('dadosPessoaisFormData', JSON.stringify(data)); // Salvar dados no localStorage
       enviarSuasInformacoes();
@@ -70,6 +59,25 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
     history.push('/cadastro/TipoCadastro');
   }
 
+  const checkCep = (e) => {
+    const cep = e.target.value;
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao buscar CEP');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setValue('endereco', data.logradouro);
+        setValue('bairro', data.bairro);
+        setValue('estado', data.uf);
+        setValue('cidade', data.localidade);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar CEP:', error);
+      });
+  };
   
   return (
     <>
@@ -111,7 +119,7 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
           </div>
           <div className='d-flex w-100 justify-content-between'>
             <div style={{ width: "49%" }}>
-              <Input  id="cep" label="CEP" type="text" name="cep" placeholder="Digite seu CEP" validation={{ control }} error={errors.cep} defaultValue={formData.cep} />
+              <Input onBlur={checkCep} id="cep" label="CEP" type="text" name="cep" placeholder="Digite seu CEP" validation={{ control }} error={errors.cep} defaultValue={formData.cep} />
             </div>
             <div style={{ width: "49%" }}>
               <Input  id="estado" label="Estado" type="text" name="estado" placeholder="Digite o seu estado" validation={{ control }} error={errors.estado} defaultValue={formData.estado} />

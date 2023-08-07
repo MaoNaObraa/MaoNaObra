@@ -2,7 +2,7 @@ import './Input.css';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-const Input = ({ id, label, type, name, placeholder, validation, error }) => {
+const Input = ({ id, label, type, name, placeholder, validation, error, onBlur }) => {
   return (
     <div className='d-flex flex-column' id='input-group'>
       <label htmlFor={id}>{label}</label>
@@ -17,6 +17,7 @@ const Input = ({ id, label, type, name, placeholder, validation, error }) => {
             type={type}
             className='rounded input-component'
             placeholder={placeholder}
+            onBlur={onBlur}
           />
         )}
       />
