@@ -1,19 +1,40 @@
 import './navigation.css'
+import {useContext} from 'react'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Context } from '../../../context/userContext';
 
 const Navigation = () => {
+
+    const{authenticated, logout} = useContext(Context)
+
     return ( 
         <nav id='navegacao'>
             <div className='container d-flex justify-content-between align-items-center h-100'>
                 <div id='logo-box'>
-                    <a href="/" className='d-flex align-items-center justify-content-center'>
+                    <Link to="/" className='d-flex align-items-center justify-content-center'>
                         <img src="/logo.png" alt="" width='60'/>
                         <h4 className='text-light mt-2 p-3 font-weight-bold'>MãoNaObra</h4>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className='d-flex align-items-center justify-content-center'>
-                    <a href="/login" id='login'>Login</a>
-                    <a href="#" id='cadastro'>Criar conta</a>
+                    {
+                        authenticated ? 
+                        ( 
+                        <div>
+                            <p>logado</p>
+                            <li onClick={logout}>Sair</li>
+                        </div>
+                        ) 
+                        : 
+                        (
+                        <>
+                            <Link to="/login" id='login'>Login</Link>
+                            <Link to="/cadastro/suasInformacoes" id='cadastro'>Criar conta</Link> 
+                        </>
+                        )
+                    }
+                    
                 </div>
             </div>
         </nav>
