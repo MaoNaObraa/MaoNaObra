@@ -13,9 +13,9 @@ import { UserProvider, Context } from '../../../../context/userContext';
 import Gallery from '../../Gallery/Gallery';
 
 const validationSchema = yup.object().shape({
-    ServicosOferecidos: string().required('O campo é obrigatório'),
-    Instagram: yup.string().required('O campo é obrigatório, digite seu instagram'),
-    categorias: yup.object({ value: yup.string().required("Campo obrigatorio") }),
+    ServicosOferecidos: yup.string().required('O campo é obrigatório'),
+    Instagram: yup.string().required('O campo é obrigatório, digite seu Instagram'),
+    categorias: yup.object({ value: yup.string().required("Campo obrigatório") }),
     Whatsapp: yup.string()
     .matches(/^\d{11}$/, 'O número informado é inválido, deve ter 11 dígitos incluindo o ddd.')
     .required('Campo obrigatório.'),
@@ -24,10 +24,10 @@ const validationSchema = yup.object().shape({
 })
 
 const AnuncioPage = ({ prestadorServicoDados }) => {
-    const history = useHistory()
-    const { register } = useContext(Context)
+    const history = useHistory();
+    const { register } = useContext(Context);
     const [picturesAdvert, setPicturesAdvert] = useState([]);
-    const [qtdFotos, setQtdFotos] = useState(0)
+    const [qtdFotos, setQtdFotos] = useState(0);
     const [imageUrls, setImageUrls] = useState([]);
 
     const { handleSubmit, control, formState: { errors }, setValue } = useForm({
@@ -35,31 +35,32 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
     });
 
     useEffect(() => {
-        setQtdFotos(picturesAdvert.length)
+        setQtdFotos(picturesAdvert.length);
         const urls = picturesAdvert.map((file) => URL.createObjectURL(file));
         setImageUrls(urls);
     }, [picturesAdvert])
 
     async function handleAnuncio(data) {
-
-        const userData = new FormData()
+        const userData = new FormData();
         for (const [key, value] of prestadorServicoDados.entries()) {
             userData.append(key, value);
         }
-        console.log(data)
 
-        userData.append("descriptionAd", data.description)
-        userData.append("servicesAd", data.ServicosOferecidos)
-        userData.append("category", data.categorias.value)
-        userData.append("whatsappContact", data.Whatsapp)
-        userData.append("instagramContact", data.Instagram)
-        userData.append("telephoneContact", data.Telefone)
+        userData.append("descriptionAd", data.description);
+        userData.append("servicesAd", data.ServicosOferecidos);
+        userData.append("category", data.categorias.value);
+        userData.append("whatsappContact", data.Whatsapp);
+        userData.append("instagramContact", data.Instagram);
+        userData.append("telephoneContact", data.Telefone);
+
         picturesAdvert.forEach(picture => {
-            userData.append("picturesAd", picture)
+            userData.append("picturesAd", picture);
         });
-        
 
-        await register(userData, history)
+        await register(userData, history);
+
+        // Apagar dados do Local Storage após o registro
+        localStorage.clear();
     }
 
     return (

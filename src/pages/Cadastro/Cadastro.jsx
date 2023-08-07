@@ -48,14 +48,14 @@ const Cadastro = () => {
             }
         }
     }, [dadosUser])
-    useEffect(() => {
-        // Aplicar a classe "no-scroll" quando o componente montar
-        document.body.classList.add('no-scroll');
-        return () => {
-            // Remover a classe "no-scroll" quando o componente desmontar
-            document.body.classList.remove('no-scroll');
-        };
-    }, []);
+    // useEffect(() => {
+    //     // Aplicar a classe "no-scroll" quando o componente montar
+    //     document.body.classList.add('no-scroll');
+    //     return () => {
+    //         // Remover a classe "no-scroll" quando o componente desmontar
+    //         document.body.classList.remove('no-scroll');
+    //     };
+    // }, []);
     return (
         <>
             <motion.div className='d-flex' style={{ overflowY: "hidden" }}
