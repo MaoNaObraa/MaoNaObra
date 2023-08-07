@@ -14,17 +14,17 @@ const PrestadorServicoAnuncio = () => {
 
     let staticComments = [
         {
-            "Nome": "Emanuel Alves",
+            "Nome": "Luciana calado",
             "Comentario": "Demorou um pouco, mas o serviço ficou ótimo!",
             "Avaliacao": "4.5"
         },
         {
-            "Nome": "Camilla Fernanda",
+            "Nome": "Marcio Henrique",
             "Comentario": "Ótimo trabalho, irei chamar mais vezes!!",
             "Avaliacao": "5.0"
         },
         {
-            "Nome": "Joseferson Silva",
+            "Nome": "Sylvia dechiaro",
             "Comentario": "Não gostei muito do serviço, mas é uma ótima pessoa",
             "Avaliacao": "3.0"
         },
