@@ -25,7 +25,18 @@ a{
 
 body{
   background-color: #F2F2F2;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+body::-webkit-scrollbar {
+  width: 10px;          
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(190, 190, 190, 0.671);    
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(116, 116, 116, 0.671);
 }
 
 .hidden{
