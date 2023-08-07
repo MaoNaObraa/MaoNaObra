@@ -97,10 +97,11 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
             <Input id="cpf" label="CPF" type="text" name="cpf" placeholder="Digite seu cpf" validation={{ control }}
                 error={errors.cpf}
                 defaultValue={formData.cpf}
+                mask='999.999.999-99'
               />
             </div>
             <div style={{ width: "49%" }}>
-              <Input id="rg" label="RG" type="text" name="rg" placeholder="Digite seu RG" validation={{ control }} error={errors.rg} defaultValue={formData.rg} />
+              <Input id="rg" label="RG" type="text" name="rg" placeholder="Digite seu RG" validation={{ control }} error={errors.rg} defaultValue={formData.rg} mask='99.999.999'/>
             </div>
           </div>
           <Input id="dataNascimento" label="Data de nascimento" type="date" name="dataNascimento" placeholder="Digite sua data de nascimento" validation={{ control }} error={errors.dataNascimento} defaultValue={formData.dataNascimento} />
@@ -119,7 +120,7 @@ const DadosPessoais = ({ onSaveDadosPessoais }) => {
           </div>
           <div className='d-flex w-100 justify-content-between'>
             <div style={{ width: "49%" }}>
-              <Input onBlur={checkCep} id="cep" label="CEP" type="text" name="cep" placeholder="Digite seu CEP" validation={{ control }} error={errors.cep} defaultValue={formData.cep} />
+              <Input onBlur={checkCep} id="cep" label="CEP" type="text" name="cep" placeholder="Digite seu CEP" validation={{ control }} error={errors.cep} defaultValue={formData.cep} mask='99999-999'/>
             </div>
             <div style={{ width: "49%" }}>
               <Input  id="estado" label="Estado" type="text" name="estado" placeholder="Digite o seu estado" validation={{ control }} error={errors.estado} defaultValue={formData.estado} />
