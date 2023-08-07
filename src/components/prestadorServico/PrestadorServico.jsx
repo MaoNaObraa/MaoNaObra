@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import './PrestadorServico.css'
 import estrela from "/star.svg"
 
-const PrestadorServico = ({ foto, nome, descricao, servicos, avaliacao }) => {
+const PrestadorServico = ({ foto, nome, descricao, servicos, avaliacao,rota }) => {
+  let servicosArray = servicos.split(',')
   return (
     <>
-      <Link to="/prestadorServicoAnuncio">
-        <div className='card'>
+      <Link to={rota}>
+        <div className='card mb-4'>
 
           <div className='imagem' style={{ backgroundImage: `url(${foto})` }}>
             <div className='d-flex justify-content-end'>
@@ -17,7 +18,7 @@ const PrestadorServico = ({ foto, nome, descricao, servicos, avaliacao }) => {
           </div>
 
           <div className='d-flex flex-column justify-content-around px-2 py-1'>
-            <div>
+            <div className='d-flex flex-column justify-content-between'>
               <div>
                 <h5 id='Nome'>{nome}</h5>
               </div>
@@ -27,7 +28,9 @@ const PrestadorServico = ({ foto, nome, descricao, servicos, avaliacao }) => {
             </div>
             <div className='d-flex flex-column'>
               <p id='services'>serviços:</p>
-              <p id='function'>{servicos.join(' · ')}</p>
+              <p id='function'>
+                {servicosArray.join(' · ')}
+              </p>
             </div>
           </div>
           <div>

@@ -1,40 +1,30 @@
 import './Gallery.css'
-import { motion } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import {register} from 'swiper/element/bundle'
+import { Swiper, SwiperSlide} from 'swiper/react'
 
-import fotoExemplo1 from '/fotoExemplo1.jpg'
-import fotoExemplo2 from '/fotoexemplo2.jpg'
-import fotoExemplo3 from '/fotoexemplo3.jpg'
-import fotoExemplo4 from '/fotoexemplo4.jpg'
-import fotoExemplo5 from '/fotoexemplo5.jpg'
+register()
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
+const Gallery = ({images}) => {
 
-const Gallery = () => {
-
-    const caroussel = useRef()
-    const[width, setWidth] = useState(0)
-
-    useEffect(()=> {
-        console.log(caroussel.current?.scrollWidth, caroussel.current?.offsetWidth)
-        setWidth(caroussel.current?.scrollWidth - caroussel.current?.offsetWidth)
-    },[])
-
-    const images = [fotoExemplo1,fotoExemplo2,fotoExemplo3,fotoExemplo4,fotoExemplo5]
     return ( 
-        <motion.div ref={caroussel} className='caroussel-box' whileTap={{cursor: 'grabbing'}}>
-            <motion.div className='caroussel d-flex' 
-            dragConstraints={{right: 0, left: -width}}
-            drag="x"
-            initial={{x:50}}
-            animate={{x:0}}
-            transition={{duration: 1}}
+        <>
+            <Swiper
+                slidesPerView={1}
+                pagination={{clickable: true}}
+                navigation
             >
-                {images.map((image)=>(
-                    <motion.div key={image} className='px-2'>
-                        <div className='caroussel-images' style={{backgroundImage: `url(${image})`}}></div>
-                    </motion.div>
-                ))}
-            </motion.div>
-        </motion.div>
+                {
+                    images.map((image, index)=>(
+                        <SwiperSlide key={index}>
+                            <div style={{backgroundImage: `url('${image}')`}} className='caroussel-images'></div>
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
+        </>
      );
 }
  

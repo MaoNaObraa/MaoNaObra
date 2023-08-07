@@ -3,48 +3,59 @@ import './TipoCadastro.css';
 import prestadorServico from '/prestadorServico-icon.png';
 import cliente from '/cliente-icon.png';
 import { useHistory } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { UserProvider, Context } from '../../../../context/userContext';
 
-const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
-
+const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, userDataEnv ,prestadorServicoDados,imagemPerfil }) => {
     const history = useHistory();
     const [tipoCadastro, setTipoCadastro] = useState('');
     const [erroTipoCadastro, setErroTipoCadastro] = useState('');
+    const { register } = useContext(Context)
+
     function voltarParaDadosPessoais() {
         history.push('/cadastro/dadosPessoais');
     }
-    
 
-    function validacaoTipoCadastro() {
+
+    async function validacaoTipoCadastro() {
         if (!tipoCadastro) {
             setErroTipoCadastro('Por favor, selecione um tipo de cadastro antes de prosseguir.');
         } else {
             setErroTipoCadastro('');
-            const user = {
-                "name": suasInformacoesDados.nomeCompleto,
-            "email": suasInformacoesDados.email,
-            "cellphone": suasInformacoesDados.celular,
-            "password": suasInformacoesDados.senha,
-            "confirmPassword": suasInformacoesDados.senhaConfirm,
-            "CPF": dadosPessoaisDados.cpf,
-            "RG":  dadosPessoaisDados.rg,
-            "birthDate":  dadosPessoaisDados.dataNascimento,
-             "completeAdress": dadosPessoaisDados.endereco,
-             "CEP": dadosPessoaisDados.cep,
-             "number": dadosPessoaisDados.numero,
-             "neighborhood": dadosPessoaisDados.bairro,
-             "locationState": dadosPessoaisDados.estado,
-             "complement": dadosPessoaisDados.complemento,
-             "city": dadosPessoaisDados.cidade,
-             "tipoCadastro": tipoCadastro,
+            const userData = new FormData()
+            for (const [key, value] of imagemPerfil.entries()) {
+                userData.append(key, value);
             }
-            if (tipoCadastro === 'prestadorServico') {
-                console.log(user);
-                 history.push('/anuncioPage');
-            } else if (tipoCadastro === 'cliente') {
-                console.log(user);
-                history.push('/');
+            userData.append( "name", suasInformacoesDados.nomeCompleto);
+            userData.append("email", suasInformacoesDados.email );
+            userData.append("cellphone", suasInformacoesDados.celular );
+            userData.append( "password", suasInformacoesDados.senha);
+            userData.append( "confirmPassword", suasInformacoesDados.senhaConfirm);
+            userData.append( "CPF", dadosPessoaisDados.cpf);
+            userData.append("RG", dadosPessoaisDados.rg );
+            userData.append("birthDate", dadosPessoaisDados.dataNascimento );
+            userData.append("completeAdress", dadosPessoaisDados.endereco );
+            userData.append("CEP", dadosPessoaisDados.cep);
+            userData.append( "number", dadosPessoaisDados.numero);
+            userData.append("neighborhood", dadosPessoaisDados.bairro);
+            userData.append("locationState", dadosPessoaisDados.estado);
+            userData.append("complement", dadosPessoaisDados.complemento);
+            userData.append("city", dadosPessoaisDados.cidade);
+            userData.append("tipoCadastro", tipoCadastro);
+
+            try {
+                if (tipoCadastro === 'prestadorServico') {
+                    history.push('/cadastro/anuncioPage')
+                    prestadorServicoDados(tipoCadastro)
+                    userDataEnv(userData)
+                } else if (tipoCadastro === 'cliente') {
+                    register(userData, history)
+                }
+            } catch (error) {
+                console.log(error)
             }
+
+
         }
     }
 
@@ -53,9 +64,9 @@ const TipoCadastro = ({suasInformacoesDados, dadosPessoaisDados }) => {
     return (
         <>
             <motion.div className='principal-box-cadastro box-tipo-cadastro d-flex flex-column justify-content-between'
-            initial={{y: -200}}
-            animate={{ y: 0}}
-            exit={{y:-200}}>
+                initial={{ y: -200 }}
+                animate={{ y: 0 }}
+                exit={{ y: -200 }}>
                 <div className='first-text-cadastro mb-3'>
                     <h2 className='text-principal text-center'>Selecione o seu tipo de cadastro</h2>
                 </div>
