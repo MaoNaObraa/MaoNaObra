@@ -6,6 +6,7 @@ import TipoCadastro from '../../components/Cadastro-components/tipo-cadastro/Tip
 import AnuncioPage from '../../components/Cadastro-components/anuncioPage/anuncioPage';
 import React, { useEffect, useState} from 'react';
 import { motion } from 'framer-motion';
+import './cadastro.css';
 
 
 const Cadastro = () => {
@@ -49,7 +50,7 @@ const Cadastro = () => {
     }, [dadosUser])
     return (
         <>
-            <motion.div className='d-flex' style={{ overflowY: "hidden" }}
+            <motion.div className='d-flex conteudoPrincipal' 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}>
                 <NavegationCadastro prestadorServico={isPrestadorServicoCadastro}/>

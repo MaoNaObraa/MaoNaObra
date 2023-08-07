@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .conteudoPrincipal{
+        display: block!important;
+    }
+
+    .principal-box-cadastro {
+        width: 100%!important;
+    }
+}

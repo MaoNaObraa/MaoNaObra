@@ -2,7 +2,7 @@
     height: 100%;
     width: 30%;
     background-color: var(--color-principal);
-    height: 100vh;
+    height: 170vh;
 }
 
 .step-number{
@@ -40,4 +40,11 @@ li{
     list-style-type: none;
     margin-top: 20px;
     margin-left: 0.5px;
+}
+@media (max-width: 768px) {
+    #side-bar{
+        flex-direction: row!important;
+        height: 100%!important;
+        width: 100%!important;
+    }
 }

@@ -51,7 +51,6 @@ function NavegationCadastro({prestadorServico}) {
                         }
                     </motion.div>
             </div>
-            <div></div>
         </div>
     );
 }

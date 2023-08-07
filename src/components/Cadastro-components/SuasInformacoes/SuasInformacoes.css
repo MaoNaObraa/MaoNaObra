@@ -1,6 +1,6 @@
 .principal-box-cadastro{
     width: 65%;
-    height: 101vh;
+    min-height: 100vh;
     overflow: auto;
     margin: 0 auto;
     padding: 25px 30px;
@@ -67,4 +67,9 @@
     font-size: 18px;
     transition: all 400ms;
     width: 250px;
+}
+@media (max-width: 768px) {
+    .principal-box-cadastro{
+        width: 100%;
+    }
 }
