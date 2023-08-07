@@ -3,10 +3,8 @@ import CardsPrestadorServico from '../../components/Home-components/cards-Presta
 import Categories from '../../components/categories-filter/categories/Categories';
 import FilterSearch from '../../components/categories-filter/filter/FilterSearch';
 import './Home.css'
-import SearchResults from '../../components/Home-components/searchResults/searchResults';
 import { motion } from 'framer-motion';
 import api from '../../../utils/api';
-import PrestadorServico from '../../components/prestadorServico/PrestadorServico';
 import ShowResultsToHome from '../../components/showResultsToHome/ShowResultsToHome';
 
 const Home = () => {
