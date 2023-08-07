@@ -7,6 +7,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import { AnimatePresence } from 'framer-motion';
 import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
 import { UserProvider } from '../context/userContext';
+import Profile from './pages/Profile/Profile';
 
 function App() {
 
@@ -22,12 +23,15 @@ function App() {
                 <Cadastro />
               </Route>
 
-              <Route path={["/", "/users/:id"]} exact>
+              <Route path={["/", "/users/:id", "/profile"]} exact>
                 <Navigation />
               </Route>
 
               <Switch>
 
+                <Route path="/profile">
+                  <Profile />
+                </Route>
                 <Route path="/login" exact>
                   <Login />
                 </Route>
