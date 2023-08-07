@@ -51,7 +51,7 @@ const PrestadorServicoAnuncio = () => {
 
 
 
-            const baseUrl = 'http://localhost:5000/images/servicos';
+            const baseUrl = 'http://54.87.135.22:5000/images/servicos';
             const pictureUrls = jsonArray.map(fileName => `${baseUrl}/${fileName}`);
             setPicturesURL(pictureUrls);
         }
@@ -62,7 +62,7 @@ const PrestadorServicoAnuncio = () => {
     return (
         <div className='container d-flex justify-content-between' id='main-anuncio'>
             <div id='perfil-box-anuncio' className='d-flex align-items-center flex-column justify-content-center'>
-                <div id='foto-perfil-anuncio' style={{ backgroundImage: `url('http://localhost:5000/images/users/${prestadorServico.image}')` }}></div>
+                <div id='foto-perfil-anuncio' style={{ backgroundImage: `url('http://54.87.135.22:5000/images/users/${prestadorServico.image}')` }}></div>
                 <h3 className='mt-3'>{prestadorServico.name}</h3>
                 <h5>{prestadorServico.city} | {prestadorServico.locationState}</h5>
                 <h6 className='text-center'>

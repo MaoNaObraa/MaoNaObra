@@ -22,7 +22,7 @@ const CardsPrestadorServico = () => {
                         prestadoresServico.map((prestador) => (
                             <PrestadorServico
                                 key={prestador.id}
-                                foto={`http://localhost:5000/images/users/${prestador.image}`}
+                                foto={`http://54.87.135.22:5000/images/users/${prestador.image}`}
                                 nome={prestador.name}
                                 descricao={prestador.descriptionAd}
                                 servicos={prestador.servicesAd}

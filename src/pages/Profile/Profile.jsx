@@ -35,7 +35,7 @@ const Profile = () => {
     useEffect(()=>{
             if(picturesAd){
                 const imagensArray = JSON.parse(user.picturesAd);
-                const urls = imagensArray.map((imageName) => `http://localhost:5000/images/servicos/${imageName}`);
+                const urls = imagensArray.map((imageName) => `http://54.87.135.22:5000/images/servicos/${imageName}`);
                 setImageUrls(urls);
             }
             
