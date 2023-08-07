@@ -13,7 +13,7 @@ const Footer = () => {
 
           <div className='right-imagens'>
             <Link to="/login" className="coment">Conheça nossa Equipe</Link>
-            <img src="/github.png" alt="GitHub" width='60'/>
+            <a href="https://github.com/MaoNaObraa/MaoNaObra"><img src="/github.png" alt="GitHub" width='40'/></a>
           </div>
         </div>
 
