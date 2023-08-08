@@ -42,7 +42,7 @@ const Navigation = () => {
                                         imageProfile ? 
                                         <div className='d-flex align-items-center'>
                                             <a href="#"><img src="/notification-bell.svg" alt="" className='m-4' width={25}/></a>
-                                            <ImageProfile image={`http://localhost:5000/images/users/${imageProfile}`}/>
+                                            <ImageProfile image={`http://54.87.135.22:5000/images/users/${imageProfile}`}/>
                                         </div>
                                         :
                                         <ImageProfile image={'/placeholder-perfil.png'}/>
