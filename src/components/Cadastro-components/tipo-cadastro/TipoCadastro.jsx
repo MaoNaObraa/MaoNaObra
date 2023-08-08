@@ -17,11 +17,6 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, userDataEnv ,p
     }
 
 
-    const clearLocalStorage = () => {
-        localStorage.removeItem('dadosPessoaisFormData');
-        // Adicione outras chaves que deseja remover do localStorage aqui
-    }
-
     async function validacaoTipoCadastro() {
         if (!tipoCadastro) {
             setErroTipoCadastro('Por favor, selecione um tipo de cadastro antes de prosseguir.');
@@ -31,17 +26,17 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, userDataEnv ,p
             for (const [key, value] of imagemPerfil.entries()) {
                 userData.append(key, value);
             }
-            userData.append("name", suasInformacoesDados.nomeCompleto);
-            userData.append("email", suasInformacoesDados.email);
-            userData.append("cellphone", suasInformacoesDados.celular);
-            userData.append("password", suasInformacoesDados.senha);
-            userData.append("confirmPassword", suasInformacoesDados.senhaConfirm);
-            userData.append("CPF", dadosPessoaisDados.cpf);
-            userData.append("RG", dadosPessoaisDados.rg);
-            userData.append("birthDate", dadosPessoaisDados.dataNascimento);
-            userData.append("completeAdress", dadosPessoaisDados.endereco);
+            userData.append( "name", suasInformacoesDados.nomeCompleto);
+            userData.append("email", suasInformacoesDados.email );
+            userData.append("cellphone", suasInformacoesDados.celular );
+            userData.append( "password", suasInformacoesDados.senha);
+            userData.append( "confirmPassword", suasInformacoesDados.senhaConfirm);
+            userData.append( "CPF", dadosPessoaisDados.cpf);
+            userData.append("RG", dadosPessoaisDados.rg );
+            userData.append("birthDate", dadosPessoaisDados.dataNascimento );
+            userData.append("completeAdress", dadosPessoaisDados.endereco );
             userData.append("CEP", dadosPessoaisDados.cep);
-            userData.append("number", dadosPessoaisDados.numero);
+            userData.append( "number", dadosPessoaisDados.numero);
             userData.append("neighborhood", dadosPessoaisDados.bairro);
             userData.append("locationState", dadosPessoaisDados.estado);
             userData.append("complement", dadosPessoaisDados.complemento);
@@ -54,8 +49,8 @@ const TipoCadastro = ({ suasInformacoesDados, dadosPessoaisDados, userDataEnv ,p
                     prestadorServicoDados(tipoCadastro)
                     userDataEnv(userData)
                 } else if (tipoCadastro === 'cliente') {
-                    localStorage.clear(); // Limpa todo o localStorage se o tipo for cliente
-                    register(userData, history)
+                    localStorage.clear();                   
+                     register(userData, history)
                 }
             } catch (error) {
                 console.log(error)
