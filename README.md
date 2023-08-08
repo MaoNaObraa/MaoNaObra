@@ -57,23 +57,14 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## pessoas-desenvolvedoras 🛠️
 
-João Gabriel
-
-https://www.linkedin.com/in/joão-gabriel-barbosa-costa-3230ba268/
-![image](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/48a118a1-a62f-4a56-9886-99164e3b7561)
-
-
+![João](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/2229f4dd-fa3f-4c78-898a-791de6fd28d8)  ![kemysson2](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/4ac21bd4-32d2-43ad-8346-181b8c787c38)
+ ![lays 2](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/79e84e0f-ef62-487b-b351-87f92f4dada2) ![wendell](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/f4294be8-8596-417a-893b-357c7564577a)
 
 
 Kemysson Fernando
 
 https://www.linkedin.com/in/kemysson-fernando-747303271/
 ![WhatsApp Image 2023-04-13 at 18 49 50_resized](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/1ae779fb-bc02-4109-b234-9d6cda701109)
-
-Lays Leticia
-
-https://www.linkedin.com/in/lays-leticia-l/
-![image](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/8d253577-71da-4dac-9edd-f4c668cc9259)
 
 
 wendel isaac
