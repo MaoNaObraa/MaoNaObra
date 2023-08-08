@@ -45,11 +45,11 @@ const Profile = () => {
     return (
         <div className='container'>
             <div id="main-box">
-                <div className='d-flex align-items-center justify-content-between'>
+                <div className='d-flex align-items-center justify-content-between' id='picture-box'>
                     <div>
                         {
                             user.image ?
-                                <label htmlFor='image-perfil' id='placeholder-perfil-edit' style={{ backgroundImage: `url(${'/placeholder-perfil.png'})` }}></label>
+                                <label htmlFor='image-perfil' id='placeholder-perfil-edit' style={{ backgroundImage: `url('http://54.87.135.22:5000/images/users/${user.image}')` }}></label>
                                 :
                                 <label htmlFor='image-perfil' id='placeholder-perfil-edit' style={{ backgroundImage: "url('/placeholder-perfil.png')" }}></label>
                         }

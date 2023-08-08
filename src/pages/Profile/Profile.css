@@ -50,3 +50,12 @@
     font-weight: 600;
     transition: all 400ms;
 }
+
+@media (max-width: 767.98px) {
+    #main-box{
+        width: 100%;
+    }
+    #picture-box{
+        flex-direction: column;
+    }
+}

@@ -19,6 +19,12 @@ const Home = () => {
         setMostrarResultados(true)
     };
 
+    const isEmpty = (empty) =>{
+        if (empty == "") {
+            setMostrarResultados(false)
+        }
+    }
+
     const pesquisar = (event) => {
         setMostrarResultados(true)
         event.preventDefault()
@@ -41,7 +47,7 @@ const Home = () => {
             exit={{ opacity: 0 }}
         >
             <div id='categories-box'>
-                <FilterSearch cityUsers={updateUsersFound} />
+                <FilterSearch cityUsers={updateUsersFound} empty={isEmpty} />
                 <Categories />
             </div>
 

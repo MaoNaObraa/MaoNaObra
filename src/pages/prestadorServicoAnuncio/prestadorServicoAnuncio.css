@@ -82,3 +82,20 @@
     filter: brightness(0.9);
     box-shadow: 0 0 10px rgb(161, 161, 161);
 }
+
+@media (max-width: 767.98px) {
+    #main-anuncio{
+        flex-direction: column;
+    }
+
+    #perfil-box-anuncio{
+        width: 100%;
+        border: 0;
+        height: 350px;
+    }
+
+    #other-side-anuncio{
+        width: 100%;
+        overflow-x: none;
+    }
+}
