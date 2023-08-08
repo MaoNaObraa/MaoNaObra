@@ -1,4 +1,4 @@
-import "./SelectCategorie.css"
+import "./selectCategorie.css"
 
 const SelectCategorie = ({ nomeCategoria, id, value }) => {
 

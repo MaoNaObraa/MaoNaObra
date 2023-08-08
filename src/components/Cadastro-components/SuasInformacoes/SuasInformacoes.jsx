@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import './suasInformacoes.css'
+import './SuasInformacoes.css';
 
 const validationSchema = yup.object().shape({
   nomeCompleto: yup.string().matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, 'Digite apenas letras').required('Campo obrigatório.'),
