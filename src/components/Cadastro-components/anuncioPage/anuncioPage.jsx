@@ -152,7 +152,7 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                                 />
                             </div>
                             <div className='d-flex align-items-center p-3' style={{ width: '540px', height: '300px' }}>
-                                {imageUrls ? <Gallery images={imageUrls} /> : <div>nada aqui</div>}
+                                {imageUrls ? <Gallery images={imageUrls} /> : <div>As fotos são obrigatórias </div>}
                             </div>
                         </div>
                         {submitted && picturesAdvert.length === 0 && <span className='error-message'>Selecione pelo menos uma foto</span>}
