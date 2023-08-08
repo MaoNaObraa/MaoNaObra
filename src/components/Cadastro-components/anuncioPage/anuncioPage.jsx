@@ -134,7 +134,7 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                                         <span>{qtdFotos}/5</span>
                                     </div>
                                 </label>
-                                <input type="file" name="picturesAd" className='d-none' id="picturesAd" multiple={true} onChange={e => setPicturesAdvert(Array.from(e.target.files))} />
+                                <input type="file" name="picturesAd" className='d-none' id="picturesAd" accept='image/png, image/jpeg' multiple={true} onChange={e => setPicturesAdvert(Array.from(e.target.files))} />
                             </div>
                             <div className='d-flex align-items-center p-3' style={{    width: '540px',height: '300px'}}>
                             {

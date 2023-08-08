@@ -13,11 +13,6 @@ const Gallery = ({ images }) => {
                 slidesPerView={1}
                 pagination={{ clickable: true }}
                 navigation
-                breakpoints={{
-                    768: {
-                        slidesPerView: 1,
-                    },
-                }}
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index}>
