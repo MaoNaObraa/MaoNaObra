@@ -13,7 +13,7 @@ const Profile = () => {
     const [selectedType, setSelectedType] = useState();
     const [imageUrls, setImageUrls] = useState([]);
     const [picturesAd, setPicturesAd] = useState()
-    
+
 
     useEffect(() => {
         api.get('/users/checkuser', {
@@ -32,13 +32,13 @@ const Profile = () => {
         }
     }, [user])
 
-    useEffect(()=>{
-            if(picturesAd){
-                const imagensArray = JSON.parse(user.picturesAd);
-                const urls = imagensArray.map((imageName) => `http://54.87.135.22:5000/images/servicos/${imageName}`);
-                setImageUrls(urls);
-            }
-            
+    useEffect(() => {
+        if (picturesAd) {
+            const imagensArray = JSON.parse(user.picturesAd);
+            const urls = imagensArray.map((imageName) => `http://54.87.135.22:5000/images/servicos/${imageName}`);
+            setImageUrls(urls);
+        }
+
     }, [picturesAd])
 
 
@@ -209,7 +209,18 @@ const Profile = () => {
                                         :
                                         <div>
                                             <label htmlFor="descriptionAd">Categoria:</label>
-                                            <h4>{user.category}</h4>
+                                            {user.category === "construcaoReformas"
+                                                ? <h4>Construções e reformas</h4>
+                                                : user.category === "servicosAutomotivos"
+                                                    ? <h4>Serviços automotivos</h4>
+                                                    : user.category === "servicosDomesticos"
+                                                        ? <h4>Serviços domésticos</h4>
+                                                        : user.category === "servicosJardinagem"
+                                                            ? <h4>Serviços de Jardinagem</h4>
+                                                            :
+                                                            ''
+                                            }
+
                                         </div>
                                 }
 
@@ -220,15 +231,33 @@ const Profile = () => {
                             </div>
 
                             <div id="input-group" className='d-flex flex-column'>
-                            {
-                                imageUrls ?
-                                <div className='mt-4'>
-                                <label>Fotos dos serviços:</label>
-                                    <Gallery images={imageUrls}/>
+                                {
+                                    imageUrls ?
+                                        <div className='mt-4'>
+                                            <label>Fotos dos serviços:</label>
+                                            <Gallery images={imageUrls} />
+                                        </div>
+                                        :
+                                        ''
+                                }
+                            </div>
+                            <div className='first-text-cadastro mb-3 mt-4'>
+                                <hr />
+                                <h2 className='text-principal'>Contatos</h2>
+                            </div>
+                            <div id="input-group" className='d-flex flex-column'>
+                                <div id="input-group" className='d-flex flex-column'>
+                                    <label htmlFor="whatsapp">Whatsapp:</label>
+                                    <input value={user.whatsappContact} type="text" id='whatsapp' name='whatsapp' className='rounded input-component' disabled={!isEditing} />
                                 </div>
-                                : 
-                                ''
-                            }
+                                <div id="input-group" className='d-flex flex-column'>
+                                    <label htmlFor="instagram">Instagram:</label>
+                                    <input value={user.instagramContact} type="text" id='instagram' name='instagram' className='rounded input-component' disabled={!isEditing} />
+                                </div>
+                                <div id="input-group" className='d-flex flex-column'>
+                                    <label htmlFor="telefone">Telefone:</label>
+                                    <input value={user.telephoneContact} type="text" id='instagram' name='instagram' className='rounded input-component' disabled={!isEditing} />
+                                </div>
                             </div>
 
                         </div>

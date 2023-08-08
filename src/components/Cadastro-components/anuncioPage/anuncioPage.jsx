@@ -42,6 +42,12 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
 
     async function handleAnuncio(data) {
 
+        if (picturesAdvert.length === 0) {
+            return;
+        }
+        if (picturesAdvert.length > 5) {
+            return;
+        }
         const userData = new FormData()
         for (const [key, value] of prestadorServicoDados.entries()) {
             userData.append(key, value);
@@ -124,7 +130,7 @@ const AnuncioPage = ({ prestadorServicoDados }) => {
                                 <label htmlFor="picturesAd" id='label-picturesAd' className='d-flex align-items-center justify-content-center'>
                                     <div className='d-flex flex-column align-items-center'>
                                         <img src="/picture-icon.svg" alt="" width={30} />
-                                        <span>Fotos do seu serviços</span>
+                                        <span>Fotos do seu serviço</span>
                                         <span>{qtdFotos}/5</span>
                                     </div>
                                 </label>

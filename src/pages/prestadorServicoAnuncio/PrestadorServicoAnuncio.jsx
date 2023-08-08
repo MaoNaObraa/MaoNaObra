@@ -11,7 +11,6 @@ const PrestadorServicoAnuncio = () => {
     const [picturesURL, setPicturesURL] = useState([])
     const [servicos, setServicos] = useState([])
     const { id } = useParams()
-    const [token] = useState(localStorage.getItem('token') || '')
     const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {

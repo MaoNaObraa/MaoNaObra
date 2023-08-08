@@ -15,6 +15,7 @@ const ShowResultsToHome = ({ usersFound }) => {
                                 descricao={prestador.descriptionAd}
                                 servicos={prestador.servicesAd}
                                 avaliacao={"5.0"}
+                                cidade={prestador.city}
                                 rota={`/users/${prestador.id}`}
                             />
                         ))
