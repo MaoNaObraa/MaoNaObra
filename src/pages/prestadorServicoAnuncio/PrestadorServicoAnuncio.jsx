@@ -4,6 +4,7 @@ import api from '../../../utils/api'
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom'
 import Comment from '../../components/comment/Comment';
+import ModalContacts from '../../components/modal-contacts/ModalContacts';
 
 const PrestadorServicoAnuncio = () => {
     const [prestadorServico, setPrestadorServico] = useState({})
@@ -11,6 +12,15 @@ const PrestadorServicoAnuncio = () => {
     const [servicos, setServicos] = useState([])
     const { id } = useParams()
     const [token] = useState(localStorage.getItem('token') || '')
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+      };
+    
+      const closeModal = () => {
+        setModalOpen(false);
+      };
 
     let staticComments = [
         {
@@ -87,8 +97,9 @@ const PrestadorServicoAnuncio = () => {
                     </div>
                 </div>
                 <div id='contract-button' className='mt-3'>
-                    <button>Contratar</button>
+                    <button onClick={openModal}>Contratar</button>
                 </div>
+                <ModalContacts isOpen={modalOpen} onClose={closeModal}/>
                 <div id='comments-section' className='mt-4'>
                     <h5 className='text-principal mb-3'>Comentarios (4)</h5>
                     <div>
