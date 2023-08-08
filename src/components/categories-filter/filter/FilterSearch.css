@@ -29,11 +29,12 @@ input.pesquisa {
 
 }
 
-.lupa {
+.lupa-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #03334A;
     height: 30px;
-    border: 0px;
-    width: 40px;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 

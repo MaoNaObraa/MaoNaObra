@@ -41,3 +41,30 @@ li{
     margin-top: 20px;
     margin-left: 0.5px;
 }
+
+@media (max-width: 767.98px) {
+    #side-bar{
+        height: 100px;
+        width: 100%;
+        background-color: var(--color-principal);
+        flex-direction: row !important;
+    }
+
+    #logo-box img{
+        width: 60px;
+    }
+
+    #navegation-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 23px;
+    }
+    #navegation-box li{
+        margin: 0 !important;
+    }
+
+    .step-info{
+        display: none;
+    }
+}

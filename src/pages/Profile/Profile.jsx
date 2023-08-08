@@ -45,7 +45,7 @@ const Profile = () => {
     return (
         <div className='container'>
             <div id="main-box">
-                <div className='d-flex align-items-center justify-content-between'>
+                <div className='d-flex align-items-center justify-content-between' id='picture-box'>
                     <div>
                         {
                             user.image ?

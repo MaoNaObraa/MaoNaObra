@@ -147,7 +147,6 @@ const SuasInformacoes = ({ onSave, onSaveImage }) => {
           </form>
         </div>
       </motion.div>
-      <div></div>
     </>
   );
 };

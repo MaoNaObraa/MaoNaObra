@@ -28,6 +28,7 @@ const CardsPrestadorServico = () => {
                                 servicos={prestador.servicesAd}
                                 avaliacao={"5.0"}
                                 rota={`/users/${prestador.id}`}
+                                cidade={prestador.city}
                             />
                         ))
                         :

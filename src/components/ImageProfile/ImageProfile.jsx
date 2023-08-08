@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import './ImageProfile.css'
 import { Context } from '../../../context/userContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';

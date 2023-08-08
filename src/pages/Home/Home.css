@@ -69,3 +69,13 @@
     filter: brightness(0.9);
     box-shadow: 3px 3px 5px rgba(165, 165, 165, 0.315);
 }
+
+@media (max-width: 767.98px) {
+    #categories-box{
+        display: none;
+    }
+
+    #principal-box-home{
+        width: 100%;
+    }
+}

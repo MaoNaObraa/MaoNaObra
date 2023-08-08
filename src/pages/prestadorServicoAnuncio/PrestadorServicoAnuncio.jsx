@@ -99,7 +99,7 @@ const PrestadorServicoAnuncio = () => {
                 <div id='contract-button' className='mt-3'>
                     <button onClick={openModal}>Contratar</button>
                 </div>
-                <ModalContacts isOpen={modalOpen} onClose={closeModal}/>
+                <ModalContacts isOpen={modalOpen} onClose={closeModal} whatsapp={prestadorServico.whatsappContact} instagram={prestadorServico.instagramContact} telefone={prestadorServico.telephoneContact} />
                 <div id='comments-section' className='mt-4'>
                     <h5 className='text-principal mb-3'>Comentarios (4)</h5>
                     <div>

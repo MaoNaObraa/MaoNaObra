@@ -58,7 +58,7 @@ const Cadastro = () => {
     }, []);
     return (
         <>
-            <motion.div className='d-flex' style={{ overflowY: "hidden" }}
+            <motion.div className='d-flex' id='cadastro-principal' style={{ overflowY: "hidden" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}>
                 <NavegationCadastro prestadorServico={isPrestadorServicoCadastro}/>
