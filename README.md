@@ -57,9 +57,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## pessoas-desenvolvedoras 🛠️
 
+João Gabriel,Kemysson Fernando,Lays Leticia,Wendel isaac
+
 ![João](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/2229f4dd-fa3f-4c78-898a-791de6fd28d8)  ![kemysson2](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/4ac21bd4-32d2-43ad-8346-181b8c787c38)
  ![lays 2](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/79e84e0f-ef62-487b-b351-87f92f4dada2) ![wendell](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/f4294be8-8596-417a-893b-357c7564577a)
 
 
 
-![João](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/2229f4dd-fa3f-4c78-898a-791de6fd28d8) ![kemysson](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/f14f515d-8788-49ff-8211-c9c352b96f94) ![lays 2](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/79e84e0f-ef62-487b-b351-87f92f4dada2) ![wendell](https://github.com/MaoNaObraa/MaoNaObra/assets/130847061/f4294be8-8596-417a-893b-357c7564577a)
