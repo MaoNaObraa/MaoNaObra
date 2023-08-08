@@ -65,7 +65,7 @@ function Login() {
           </div>
 
           <div>
-            <img src="./bg-login.png" width='500' alt="" />
+            <img src="./bg-login.png" width='500' alt="" id='imagem-sideBlue'/>
           </div>
         </div>
 
